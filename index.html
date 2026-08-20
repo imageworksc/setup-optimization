@@ -746,35 +746,78 @@ a{color:inherit;}
 }
 
 /* --------------------------------------------------------------------------
-   DÓNDE APARECES — el collage de superficies de búsqueda
+   DÓNDE APARECES — las superficies de la búsqueda moderna
+   Siete teselas sueltas en una fila se leían como siete cosas equivalentes, y
+   una de ellas ni siquiera entra en el servicio. Ahora van en dos filas que
+   son las dos mitades del pie de foto: arriba lo que da el SEO, en azul;
+   abajo lo que da la búsqueda con IA, en verde. La casilla patrocinada queda
+   fuera de la retícula, con el borde discontinuo del que no está incluido.
    -------------------------------------------------------------------------- */
 .landscape{
-  display:flex;flex-wrap:wrap;
-  justify-content:center;align-items:flex-start;
-  gap:16px;
-  max-width:1060px;
-  margin:clamp(28px,3.4vw,44px) auto clamp(24px,3vw,34px);
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+  max-width:1000px;
+  margin:clamp(30px,3.6vw,46px) auto clamp(26px,3vw,36px);
 }
 .tile{
-  /* 7 × 136 + 6 × 16 = 1048: las siete teselas entran en una sola fila dentro
-     de los 1060px del collage. A 140 la última se cae de línea. */
-  width:136px;
-  padding:18px 12px 14px;
-  border-radius:var(--r);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  gap:14px;
+  padding:clamp(22px,2.4vw,30px) 18px;
   text-align:center;
-  border:1px solid rgba(255,255,255,.18);
-  box-shadow:0 1px 3px rgba(0,0,0,.2), 0 14px 30px rgba(0,0,0,.26);
-  transform:translateY(var(--y,0));
-  transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+  border:1px solid rgba(255,255,255,.14);
+  border-top:3px solid rgba(255,255,255,.24);
+  border-radius:var(--r);
+  background:rgba(255,255,255,.05);
+  transition:transform .45s var(--ease), background-color .35s var(--ease),
+             border-color .35s var(--ease), box-shadow .45s var(--ease);
 }
-.tile:hover{transform:translateY(calc(var(--y,0px) - 6px));box-shadow:0 1px 3px rgba(0,0,0,.22), 0 22px 44px rgba(0,0,0,.32);}
-.tile--green{background:linear-gradient(160deg,var(--green-ink),var(--green));}
-.tile--blue{background:linear-gradient(160deg,var(--blue),var(--blue-bright));}
-.tile--navy{background:linear-gradient(160deg,#1c4b7d,#0f2e52);}
-.tile--muted{background:rgba(255,255,255,.05);border:1.5px dashed rgba(255,255,255,.3);box-shadow:none;}
-.tile-icon{width:72px;height:62px;margin:0 auto 8px;display:block;}
-.tile-label{display:block;font-size:12.5px;font-weight:700;color:#fff;line-height:1.3;}
-.tile-label--muted{color:rgba(255,255,255,.62);font-weight:600;}
+.tile:hover{
+  transform:translateY(-6px);
+  background:rgba(255,255,255,.09);
+  box-shadow:0 1px 3px rgba(0,0,0,.22), 0 22px 44px rgba(0,0,0,.34);
+}
+/* El filete de arriba dice de qué mitad de la búsqueda viene cada superficie. */
+.tile--seo{border-top-color:var(--blue-bright);}
+.tile--ai{border-top-color:var(--green);}
+
+/* Los dibujos están hechos de blancos al 20-50%: sobre el cristal se quedaban
+   en gris. Recuperan su fondo, ahora en el color del grupo y no en uno
+   cualquiera, que era el problema del collage anterior. */
+.tile-icon{
+  inline-size:112px;
+  block-size:96px;
+  padding:8px 6px;
+  border-radius:var(--r);
+  background:linear-gradient(160deg,var(--blue),var(--blue-bright));
+  transition:transform .45s var(--ease);
+}
+.tile--ai .tile-icon{background:linear-gradient(160deg,var(--green-ink),var(--green));}
+.tile:hover .tile-icon{transform:scale(1.08);}
+.tile-label{
+  display:block;
+  font-size:15px;font-weight:700;color:#fff;line-height:1.35;
+  letter-spacing:-.01em;
+}
+
+/* La patrocinada no es una superficie más: cruza la retícula entera, va en
+   horizontal y con el trazo discontinuo de lo que queda fuera. */
+.tile--muted{
+  grid-column:1 / -1;
+  flex-direction:row;
+  justify-content:center;
+  gap:18px;
+  padding:16px 22px;
+  border:1.5px dashed rgba(255,255,255,.26);
+  background:transparent;
+}
+.tile--muted:hover{transform:none;background:rgba(255,255,255,.04);box-shadow:none;}
+.tile--muted .tile-icon{inline-size:62px;block-size:53px;padding:0;background:none;}
+.tile--muted:hover .tile-icon{transform:none;}
+.tile-label--muted{color:rgba(255,255,255,.6);font-weight:600;font-size:13.5px;}
 
 .landscape-note{
   max-width:760px;margin-inline:auto;
@@ -783,14 +826,15 @@ a{color:inherit;}
   color:rgba(226,238,252,.72);
 }
 
-@media (max-width:900px){
-  .landscape{max-width:600px;gap:14px;}
-  .tile{--y:0px !important;}
+@media (max-width:860px){
+  .landscape{grid-template-columns:1fr 1fr;max-width:620px;}
 }
-@media (max-width:700px){
-  .tile{width:130px;padding:16px 10px 12px;}
-  .tile-icon{width:60px;height:52px;}
-  .tile-label{font-size:11.5px;}
+@media (max-width:560px){
+  .landscape{grid-template-columns:1fr;max-width:340px;}
+  .tile{flex-direction:row;justify-content:flex-start;gap:16px;text-align:left;padding:16px 18px;}
+  .tile-icon{inline-size:66px;block-size:57px;flex:none;}
+  .tile-label{font-size:14.5px;}
+  .tile--muted{flex-direction:row;}
 }
 
 /* --------------------------------------------------------------------------
@@ -1386,103 +1430,108 @@ details[open] > summary .fx{
 
     <div class="landscape">
 
-      <div class="tile tile--green" style="--y:10px;">
+      <!-- Fila 1: lo que da el SEO. Mismo orden que el pie de foto. -->
+      <div class="tile tile--seo">
         <svg viewBox="0 0 56 48" class="tile-icon" aria-hidden="true">
-          <!-- mini map with roads + pin above three listing rows -->
-          <rect x="8" y="6" width="40" height="22" rx="4" fill="#ffffff" opacity="0.2"/>
-          <path d="M8 18 Q20 12 30 17 T48 14" stroke="#ffffff" stroke-width="1.6" fill="none" opacity="0.55"/>
-          <path d="M18 6 Q22 16 16 28" stroke="#ffffff" stroke-width="1.6" fill="none" opacity="0.4"/>
-          <path d="M28 9 c-3.6 0 -6.5 2.9 -6.5 6.5 c0 4.7 6.5 11 6.5 11 s6.5 -6.3 6.5 -11 c0 -3.6 -2.9 -6.5 -6.5 -6.5 z" fill="#ffffff"/>
-          <circle cx="28" cy="15.5" r="2.6" fill="#4a8628"/>
-          <g opacity="0.9">
-            <rect x="10" y="32" width="4" height="4" rx="2" fill="#ffffff"/>
-            <rect x="17" y="33" width="29" height="2.2" rx="1.1" fill="#ffffff" opacity="0.8"/>
-            <rect x="10" y="39" width="4" height="4" rx="2" fill="#ffffff" opacity="0.55"/>
-            <rect x="17" y="40" width="22" height="2.2" rx="1.1" fill="#ffffff" opacity="0.45"/>
-          </g>
-        </svg>
-        <span class="tile-label">Maps 3-Pack</span>
-      </div>
-
-      <div class="tile tile--blue" style="--y:-14px;">
-        <svg viewBox="0 0 56 48" class="tile-icon" aria-hidden="true">
-          <!-- snippet box lifted above the rest of the results -->
-          <rect x="8" y="6" width="40" height="22" rx="4" fill="#ffffff"/>
-          <rect x="13" y="11" width="22" height="3" rx="1.5" fill="#1266b5"/>
-          <rect x="13" y="17" width="30" height="2.4" rx="1.2" fill="#9cc3e8"/>
-          <rect x="13" y="22" width="25" height="2.4" rx="1.2" fill="#9cc3e8"/>
-          <path d="M40 3 l1.4 3.2 3.2 1.4 -3.2 1.4 -1.4 3.2 -1.4 -3.2 -3.2 -1.4 3.2 -1.4 z" fill="#ffffff" opacity="0.9"/>
-          <rect x="12" y="34" width="32" height="2.4" rx="1.2" fill="#ffffff" opacity="0.5"/>
-          <rect x="12" y="40" width="26" height="2.4" rx="1.2" fill="#ffffff" opacity="0.3"/>
-        </svg>
-        <span class="tile-label">Featured Snippet</span>
-      </div>
-
-      <div class="tile tile--navy" style="--y:18px;">
-        <svg viewBox="0 0 56 48" class="tile-icon" aria-hidden="true">
-          <!-- search bar + ranked results, top one highlighted -->
-          <rect x="10" y="5" width="36" height="7" rx="3.5" fill="#ffffff" opacity="0.35"/>
-          <circle cx="16" cy="8.5" r="2" fill="none" stroke="#ffffff" stroke-width="1.3" opacity="0.8"/>
-          <line x1="17.6" y1="10.1" x2="19.2" y2="11.7" stroke="#ffffff" stroke-width="1.3" opacity="0.8" stroke-linecap="round"/>
-          <g>
-            <rect x="10" y="17" width="36" height="9" rx="2.5" fill="#80C34A"/>
-            <rect x="14" y="20" width="18" height="2.6" rx="1.3" fill="#0a2340"/>
-          </g>
-          <rect x="10" y="30" width="36" height="6" rx="2" fill="#ffffff" opacity="0.4"/>
-          <rect x="10" y="39" width="36" height="6" rx="2" fill="#ffffff" opacity="0.2"/>
+        <!-- search bar + ranked results, top one highlighted -->
+        <rect x="10" y="5" width="36" height="7" rx="3.5" fill="#ffffff" opacity="0.35"/>
+        <circle cx="16" cy="8.5" r="2" fill="none" stroke="#ffffff" stroke-width="1.3" opacity="0.8"/>
+        <line x1="17.6" y1="10.1" x2="19.2" y2="11.7" stroke="#ffffff" stroke-width="1.3" opacity="0.8" stroke-linecap="round"/>
+        <g>
+        <rect x="10" y="17" width="36" height="9" rx="2.5" fill="#80C34A"/>
+        <rect x="14" y="20" width="18" height="2.6" rx="1.3" fill="#0a2340"/>
+        </g>
+        <rect x="10" y="30" width="36" height="6" rx="2" fill="#ffffff" opacity="0.4"/>
+        <rect x="10" y="39" width="36" height="6" rx="2" fill="#ffffff" opacity="0.2"/>
         </svg>
         <span class="tile-label">Organic Listings</span>
       </div>
 
-      <div class="tile tile--green" style="--y:-8px;">
+      <div class="tile tile--seo">
         <svg viewBox="0 0 56 48" class="tile-icon" aria-hidden="true">
-          <!-- sparkle writing an answer, lines appearing progressively -->
-          <path d="M17 6 l2.2 5 5 2.2 -5 2.2 -2.2 5 -2.2 -5 -5 -2.2 5 -2.2 z" fill="#ffffff"/>
-          <path d="M30 9 l1.2 2.7 2.7 1.2 -2.7 1.2 -1.2 2.7 -1.2 -2.7 -2.7 -1.2 2.7 -1.2 z" fill="#ffffff" opacity="0.65"/>
-          <rect x="10" y="25" width="36" height="2.6" rx="1.3" fill="#ffffff"/>
-          <rect x="10" y="31" width="30" height="2.6" rx="1.3" fill="#ffffff" opacity="0.7"/>
-          <rect x="10" y="37" width="23" height="2.6" rx="1.3" fill="#ffffff" opacity="0.45"/>
-          <rect x="35" y="37" width="4" height="2.6" rx="1.3" fill="#0a2340" opacity="0.6"/>
+        <!-- mini map with roads + pin above three listing rows -->
+        <rect x="8" y="6" width="40" height="22" rx="4" fill="#ffffff" opacity="0.2"/>
+        <path d="M8 18 Q20 12 30 17 T48 14" stroke="#ffffff" stroke-width="1.6" fill="none" opacity="0.55"/>
+        <path d="M18 6 Q22 16 16 28" stroke="#ffffff" stroke-width="1.6" fill="none" opacity="0.4"/>
+        <path d="M28 9 c-3.6 0 -6.5 2.9 -6.5 6.5 c0 4.7 6.5 11 6.5 11 s6.5 -6.3 6.5 -11 c0 -3.6 -2.9 -6.5 -6.5 -6.5 z" fill="#ffffff"/>
+        <circle cx="28" cy="15.5" r="2.6" fill="#4a8628"/>
+        <g opacity="0.9">
+        <rect x="10" y="32" width="4" height="4" rx="2" fill="#ffffff"/>
+        <rect x="17" y="33" width="29" height="2.2" rx="1.1" fill="#ffffff" opacity="0.8"/>
+        <rect x="10" y="39" width="4" height="4" rx="2" fill="#ffffff" opacity="0.55"/>
+        <rect x="17" y="40" width="22" height="2.2" rx="1.1" fill="#ffffff" opacity="0.45"/>
+        </g>
         </svg>
-        <span class="tile-label">AI Overview</span>
+        <span class="tile-label">Maps 3-Pack</span>
       </div>
 
-      <div class="tile tile--blue" style="--y:14px;">
+      <div class="tile tile--seo">
         <svg viewBox="0 0 56 48" class="tile-icon" aria-hidden="true">
-          <!-- conversation: question bubble + answering bubble w/ typing dots -->
-          <path d="M9 10c0-2.2 1.8-4 4-4h18c2.2 0 4 1.8 4 4v7c0 2.2-1.8 4-4 4H18l-5 4.5V21h0c-2.2 0-4-1.8-4-4z" fill="#ffffff" opacity="0.5"/>
-          <rect x="14" y="10" width="16" height="2.2" rx="1.1" fill="#0a3a6b" opacity="0.5"/>
-          <rect x="14" y="14.5" width="11" height="2.2" rx="1.1" fill="#0a3a6b" opacity="0.35"/>
-          <path d="M47 26c0-2.2-1.8-4-4-4H25c-2.2 0-4 1.8-4 4v7c0 2.2 1.8 4 4 4h13l5 4.5V37c2.2 0 4-1.8 4-4z" fill="#ffffff"/>
-          <circle cx="28" cy="29.5" r="1.8" fill="#1266b5"/>
-          <circle cx="34" cy="29.5" r="1.8" fill="#1266b5" opacity="0.65"/>
-          <circle cx="40" cy="29.5" r="1.8" fill="#1266b5" opacity="0.35"/>
+        <!-- snippet box lifted above the rest of the results -->
+        <rect x="8" y="6" width="40" height="22" rx="4" fill="#ffffff"/>
+        <rect x="13" y="11" width="22" height="3" rx="1.5" fill="#1266b5"/>
+        <rect x="13" y="17" width="30" height="2.4" rx="1.2" fill="#9cc3e8"/>
+        <rect x="13" y="22" width="25" height="2.4" rx="1.2" fill="#9cc3e8"/>
+        <path d="M40 3 l1.4 3.2 3.2 1.4 -3.2 1.4 -1.4 3.2 -1.4 -3.2 -3.2 -1.4 3.2 -1.4 z" fill="#ffffff" opacity="0.9"/>
+        <rect x="12" y="34" width="32" height="2.4" rx="1.2" fill="#ffffff" opacity="0.5"/>
+        <rect x="12" y="40" width="26" height="2.4" rx="1.2" fill="#ffffff" opacity="0.3"/>
+        </svg>
+        <span class="tile-label">Featured Snippet</span>
+      </div>
+
+      <!-- Fila 2: lo que da la búsqueda con IA. -->
+      <div class="tile tile--ai">
+        <svg viewBox="0 0 56 48" class="tile-icon" aria-hidden="true">
+        <!-- conversation: question bubble + answering bubble w/ typing dots -->
+        <path d="M9 10c0-2.2 1.8-4 4-4h18c2.2 0 4 1.8 4 4v7c0 2.2-1.8 4-4 4H18l-5 4.5V21h0c-2.2 0-4-1.8-4-4z" fill="#ffffff" opacity="0.5"/>
+        <rect x="14" y="10" width="16" height="2.2" rx="1.1" fill="#26520f" opacity="0.5"/>
+        <rect x="14" y="14.5" width="11" height="2.2" rx="1.1" fill="#26520f" opacity="0.35"/>
+        <path d="M47 26c0-2.2-1.8-4-4-4H25c-2.2 0-4 1.8-4 4v7c0 2.2 1.8 4 4 4h13l5 4.5V37c2.2 0 4-1.8 4-4z" fill="#ffffff"/>
+        <circle cx="28" cy="29.5" r="1.8" fill="#3d7a17"/>
+        <circle cx="34" cy="29.5" r="1.8" fill="#3d7a17" opacity="0.65"/>
+        <circle cx="40" cy="29.5" r="1.8" fill="#3d7a17" opacity="0.35"/>
         </svg>
         <span class="tile-label">ChatGPT</span>
       </div>
 
-      <div class="tile tile--navy" style="--y:-12px;">
+      <div class="tile tile--ai">
         <svg viewBox="0 0 56 48" class="tile-icon" aria-hidden="true">
-          <!-- four-point star in an orbit with satellite dots -->
-          <ellipse cx="28" cy="24" rx="19" ry="10" fill="none" stroke="#ffffff" stroke-width="1.3" opacity="0.4" transform="rotate(-18 28 24)"/>
-          <path d="M28 10 C29 19 33 23 42 24 C33 25 29 29 28 38 C27 29 23 25 14 24 C23 23 27 19 28 10 Z" fill="#ffffff"/>
-          <circle cx="45" cy="15" r="2.2" fill="#80C34A"/>
-          <circle cx="11" cy="33" r="1.7" fill="#ffffff" opacity="0.6"/>
+        <!-- four-point star in an orbit with satellite dots -->
+        <ellipse cx="28" cy="24" rx="19" ry="10" fill="none" stroke="#ffffff" stroke-width="1.3" opacity="0.4" transform="rotate(-18 28 24)"/>
+        <path d="M28 10 C29 19 33 23 42 24 C33 25 29 29 28 38 C27 29 23 25 14 24 C23 23 27 19 28 10 Z" fill="#ffffff"/>
+        <circle cx="45" cy="15" r="2.2" fill="#143c66"/>
+        <circle cx="11" cy="33" r="1.7" fill="#ffffff" opacity="0.6"/>
         </svg>
         <span class="tile-label">Gemini</span>
       </div>
 
-      <div class="tile tile--muted" style="--y:8px;">
+      <div class="tile tile--ai">
         <svg viewBox="0 0 56 48" class="tile-icon" aria-hidden="true">
-          <!-- empty ad slot: dashed frame, AD chip, ghost lines -->
-          <rect x="8" y="8" width="40" height="32" rx="5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.6" stroke-dasharray="4 4"/>
-          <rect x="13" y="13" width="15" height="7" rx="2" fill="rgba(255,255,255,0.15)"/>
-          <text x="20.5" y="18.4" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="5.5" font-weight="800" fill="rgba(255,255,255,0.6)" letter-spacing="0.5">AD</text>
-          <rect x="13" y="26" width="30" height="2.4" rx="1.2" fill="rgba(255,255,255,0.3)"/>
-          <rect x="13" y="32" width="22" height="2.4" rx="1.2" fill="rgba(255,255,255,0.18)"/>
+        <!-- sparkle writing an answer, lines appearing progressively -->
+        <path d="M17 6 l2.2 5 5 2.2 -5 2.2 -2.2 5 -2.2 -5 -5 -2.2 5 -2.2 z" fill="#ffffff"/>
+        <path d="M30 9 l1.2 2.7 2.7 1.2 -2.7 1.2 -1.2 2.7 -1.2 -2.7 -2.7 -1.2 2.7 -1.2 z" fill="#ffffff" opacity="0.65"/>
+        <rect x="10" y="25" width="36" height="2.6" rx="1.3" fill="#ffffff"/>
+        <rect x="10" y="31" width="30" height="2.6" rx="1.3" fill="#ffffff" opacity="0.7"/>
+        <rect x="10" y="37" width="23" height="2.6" rx="1.3" fill="#ffffff" opacity="0.45"/>
+        <rect x="35" y="37" width="4" height="2.6" rx="1.3" fill="#0a2340" opacity="0.6"/>
+        </svg>
+        <span class="tile-label">AI Overview</span>
+      </div>
+
+      <!-- Fuera de la retícula: no entra en el servicio. -->
+      <div class="tile tile--muted">
+        <svg viewBox="0 0 56 48" class="tile-icon" aria-hidden="true">
+        <!-- empty ad slot: dashed frame, AD chip, ghost lines -->
+        <rect x="8" y="8" width="40" height="32" rx="5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.6" stroke-dasharray="4 4"/>
+        <rect x="13" y="13" width="15" height="7" rx="2" fill="rgba(255,255,255,0.15)"/>
+        <text x="20.5" y="18.4" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="5.5" font-weight="800" fill="rgba(255,255,255,0.6)" letter-spacing="0.5">AD</text>
+        <rect x="13" y="26" width="30" height="2.4" rx="1.2" fill="rgba(255,255,255,0.3)"/>
+        <rect x="13" y="32" width="22" height="2.4" rx="1.2" fill="rgba(255,255,255,0.18)"/>
         </svg>
         <span class="tile-label tile-label--muted">Sponsored (not this service)</span>
       </div>
+
+    </div>
 
     </div>
 
@@ -1800,7 +1849,7 @@ details[open] > summary .fx{
       '.section-head > *', '.pillar',
       /* el collage entra entero: cada tesela lleva su propio desplazamiento
          en `--y` y revelarlas una a una lo anularía */
-      '.landscape', '.landscape-note',
+      '.tile', '.landscape-note',
       '.steps details', '.steps-cta',
       '.stat', '.stats-note', '.stats-cta',
       '.faq-item', '.close-inner > *'
