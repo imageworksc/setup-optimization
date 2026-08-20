@@ -838,140 +838,121 @@ a{color:inherit;}
 }
 
 /* --------------------------------------------------------------------------
-   EL PLAN — un recorrido, no un acordeón
-   Antes había que abrir cada paso para leerlo y cada apertura movía la página
-   entera. Ahora el plan se lee bajando: el titular y la llamada se quedan
-   pegados a la izquierda, los pasos pasan por delante y el raíl se va llenando
-   con el scroll. Todo en filetes y gris: el color solo marca por dónde vas.
+   EL PLAN — el bloque "Why a Real CMS…" de la página Custom Web Design
+   El titular y la llamada se quedan quietos a la izquierda mientras los pasos
+   pasan por delante: la sección se lee como una sola idea y no como una lista
+   flotando debajo de un párrafo.
    -------------------------------------------------------------------------- */
-.plan-grid{
+.plan-split{
   display:grid;
-  grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);
+  grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
   gap:clamp(36px,5vw,72px);
   align-items:start;
 }
 .plan-aside{
   position:sticky;
-  top:calc(var(--nav-h) + 44px);
+  top:calc(var(--nav-h) + 40px);
   display:flex;
   flex-direction:column;
   align-items:flex-start;
-  gap:26px;
+  gap:18px;
 }
 .plan-aside h2{max-width:15ch;}
+.plan-aside .btn{margin-top:6px;}
 
-/* El raíl: un pelo gris de punta a punta y encima el verde que lo va cubriendo
-   a medida que la lista cruza la pantalla. */
-.plan-track{position:relative;}
-.plan-rail{
-  position:absolute;
-  left:16px;top:6px;bottom:6px;
-  inline-size:1px;
-  background:var(--border);
-  pointer-events:none;
+.plan-list{
+  width:100%;
+  border-radius:var(--r);
+  overflow:hidden;
+  background:linear-gradient(180deg,var(--card-top),var(--card-bottom));
+  box-shadow:var(--shadow-card);
 }
-.plan-rail-fill{
-  position:absolute;inset:0;
-  display:block;
-  background:var(--green);
-  opacity:.55;
-  transform:scaleY(0);
-  transform-origin:top center;
-}
-
-.plan-step{
+.plan-row{
   position:relative;
-  display:grid;
-  grid-template-columns:33px minmax(0,1fr);
-  column-gap:22px;
-  align-items:start;
-  padding-block:clamp(26px,2.8vw,36px);
+  display:flex;
+  align-items:flex-start;
+  gap:20px;
+  padding:24px clamp(22px,2.4vw,30px);
+  border-top:1px solid var(--border-soft);
+  transition:background-color .35s var(--ease);
 }
-.plan-step + .plan-step{border-top:1px solid var(--border-soft);}
+.plan-row:first-child{border-top:0;}
+.plan-row:hover{background:var(--tint-blue);}
 
-.plan-num{
-  grid-column:1;
-  display:grid;place-items:center;
-  inline-size:33px;block-size:33px;
-  border-radius:50%;
-  border:1px solid var(--border);
-  background:var(--white);
-  font-size:11.5px;font-weight:800;letter-spacing:.04em;
-  color:var(--faint);
-  font-variant-numeric:tabular-nums;
+/* La regla entra desde la izquierda: el mismo mecanismo que la marca da a sus
+   enlaces, en vez de una barra decorativa que está ahí siempre. */
+.plan-row::after{
+  content:'';
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-1px;
+  block-size:2px;
+  background:var(--green);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .45s var(--ease);
 }
-.plan-copy{grid-column:2;min-width:0;}
-.plan-copy h3{
-  font-size:var(--step-2);
+.plan-row:hover::after{transform:scaleX(1);}
+
+.plan-icon{
+  flex:none;
+  display:grid;
+  place-items:center;
+  inline-size:48px;
+  block-size:48px;
+  border-radius:50%;
+  background:var(--tint-blue);
+  color:var(--blue);
+  transition:background-color .35s var(--ease), color .35s var(--ease),
+             transform .35s var(--ease);
+}
+.plan-icon svg{inline-size:22px;block-size:22px;}
+.plan-row:hover .plan-icon{
+  background:var(--navy);
+  color:#fff;
+  transform:scale(1.08);
+}
+
+.plan-body{display:flex;flex-direction:column;gap:5px;min-width:0;}
+.plan-body dt{
+  font-size:var(--step-1);
   font-weight:800;
   color:var(--navy);
-  letter-spacing:-.018em;
-  line-height:1.3;
+  letter-spacing:-.01em;
+  transition:transform .35s var(--ease);
 }
-.plan-copy p{
-  margin-top:14px;
-  font-size:15.5px;
-  line-height:1.75;
+.plan-row:hover .plan-body dt{transform:translateX(4px);}
+.plan-body dd{
+  margin:0;
+  font-size:15px;
+  line-height:1.65;
   color:var(--muted);
-  max-width:58ch;
 }
+.plan-body dd + dd{margin-top:8px;}
 
-/* La acotación baja de chip azul a etiqueta de contorno: es un matiz del
-   titular, no una segunda voz. */
+/* La acotación va pegada al título, en contorno: es un matiz, no otra voz. */
 .plan-tag{
   display:inline-block;
-  margin-left:12px;
+  margin-left:10px;
   vertical-align:middle;
-  transform:translateY(-2px);
-  padding:4px 10px;
+  transform:translateY(-1px);
+  padding:3px 9px;
   border:1px solid var(--border);
   border-radius:var(--r);
-  font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
   color:var(--faint);
   white-space:nowrap;
 }
 
-/* --- Ligado al scroll donde el navegador lo soporta. Donde no, la sección se
-       queda quieta y completa: nada depende de esto para poder leerse. --- */
-@supports (animation-timeline: view()){
-  .plan-step{
-    animation:planStep linear both;
-    animation-timeline:view();
-    animation-range:entry 12% cover 26%;
-  }
-  @keyframes planStep{
-    from{opacity:.3;}
-    to{opacity:1;}
-  }
-  .plan-num{
-    animation:planNum linear both;
-    animation-timeline:view();
-    animation-range:entry 12% cover 26%;
-  }
-  @keyframes planNum{
-    from{border-color:var(--border);background:var(--white);color:var(--faint);}
-    to{border-color:var(--green);background:var(--tint-green);color:var(--green-ink);}
-  }
-  .plan-rail-fill{
-    animation:planRail linear both;
-    animation-timeline:view();
-    animation-range:cover 2% cover 88%;
-  }
-  @keyframes planRail{
-    from{transform:scaleY(0);}
-    to{transform:scaleY(1);}
-  }
-}
-
-@media (max-width:940px){
-  .plan-grid{grid-template-columns:1fr;gap:clamp(28px,4vw,40px);}
+@media (max-width:960px){
+  .plan-split{grid-template-columns:1fr;gap:clamp(28px,4vw,40px);}
   .plan-aside{position:static;}
 }
 @media (max-width:560px){
-  .plan-step{grid-template-columns:26px minmax(0,1fr);column-gap:16px;}
-  .plan-num{inline-size:26px;block-size:26px;font-size:10.5px;}
-  .plan-rail{left:12.5px;}
-  .plan-copy h3{font-size:18px;}
+  .plan-row{gap:16px;padding:22px 20px;}
+  .plan-icon{inline-size:42px;block-size:42px;}
+  .plan-icon svg{inline-size:20px;block-size:20px;}
   .plan-tag{margin-left:0;margin-top:8px;display:table;transform:none;}
 }
 
@@ -1578,10 +1559,10 @@ a{color:inherit;}
 </section>
 
 <!-- ============================================================
-     EL PLAN — recorrido con la columna izquierda fija
+     EL PLAN — argumento fijo a la izquierda, pasos que pasan al lado
      ============================================================ -->
 <section class="band" id="plan">
-  <div class="wrap plan-grid">
+  <div class="wrap plan-split">
 
     <div class="plan-aside">
       <h2>SEO &amp; AI Search Setup Plan</h2>
@@ -1590,54 +1571,47 @@ a{color:inherit;}
       </a>
     </div>
 
-    <div class="plan-track">
-      <span class="plan-rail" aria-hidden="true"><i class="plan-rail-fill"></i></span>
-      <ol class="plan-steps">
-        <li class="plan-step">
-          <span class="plan-num" aria-hidden="true">01</span>
-          <div class="plan-copy">
-            <h3>Research Foundation</h3>
-            <p>We research the keywords your buyers actually type and the AI-style questions they ask. That includes reviewing which competitors are showing up, mapping search intent across your homepage and core pages, and prioritizing pages based on your services, goals, and conversion value.</p>
-            <p>When applicable, we also run a top-ranking competitor review to see what's working in your space and where the gaps are.</p>
+    <dl class="plan-list">
+        <div class="plan-row">
+          <span class="plan-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.6" cy="10.6" r="6.4"/><path d="m15.4 15.4 4.4 4.4"/></svg></span>
+          <div class="plan-body">
+            <dt>Research Foundation</dt>
+            <dd>We research the keywords your buyers actually type and the AI-style questions they ask. That includes reviewing which competitors are showing up, mapping search intent across your homepage and core pages, and prioritizing pages based on your services, goals, and conversion value.</dd>
+            <dd>When applicable, we also run a top-ranking competitor review to see what's working in your space and where the gaps are.</dd>
           </div>
-        </li>
-
-        <li class="plan-step">
-          <span class="plan-num" aria-hidden="true">02</span>
-          <div class="plan-copy">
-            <h3>Site-Wide Search Setup</h3>
-            <p>We build a site-wide metadata strategy covering page titles, descriptions, service labels, and page templates. Then we set up global schema for the business, website, services, breadcrumbs, and page relationships so search engines and AI systems can read the site as a connected whole.</p>
-            <p>We also review crawl settings, indexing, sitemaps, canonical tags, and any launch-blocking technical issues that could hold back visibility.</p>
+        </div>
+        <div class="plan-row">
+          <span class="plan-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="5" rx="1.4"/><rect x="3" y="16" width="5.4" height="5" rx="1.4"/><rect x="9.3" y="16" width="5.4" height="5" rx="1.4"/><rect x="15.6" y="16" width="5.4" height="5" rx="1.4"/><path d="M12 8v4M5.7 16v-2.4h12.6V16M12 12v4"/></svg></span>
+          <div class="plan-body">
+            <dt>Site-Wide Search Setup</dt>
+            <dd>We build a site-wide metadata strategy covering page titles, descriptions, service labels, and page templates. Then we set up global schema for the business, website, services, breadcrumbs, and page relationships so search engines and AI systems can read the site as a connected whole.</dd>
+            <dd>We also review crawl settings, indexing, sitemaps, canonical tags, and any launch-blocking technical issues that could hold back visibility.</dd>
           </div>
-        </li>
-
-        <li class="plan-step">
-          <span class="plan-num" aria-hidden="true">03</span>
-          <div class="plan-copy">
-            <h3>Homepage &amp; Core Page Optimization<span class="plan-tag">Up to 10 pages</span></h3>
-            <p>Each core page gets its own metadata and advanced schema structure, aligned to the keyword and AI prompt research. That means every page is built around the real buyer questions and AI-style searches it should support &mdash; not generic targets.</p>
-            <p>We also look at page structure, content sections, trust points, calls to action, and the user path through each page, with recommendations for improving conversions alongside search visibility.</p>
+        </div>
+        <div class="plan-row">
+          <span class="plan-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.2"/><path d="M3 8.6h18"/><path d="M6.6 12.2h7.2"/><path d="M6.6 16h4.4"/></svg></span>
+          <div class="plan-body">
+            <dt>Homepage &amp; Core Page Optimization<span class="plan-tag">Up to 10 pages</span></dt>
+            <dd>Each core page gets its own metadata and advanced schema structure, aligned to the keyword and AI prompt research. That means every page is built around the real buyer questions and AI-style searches it should support &mdash; not generic targets.</dd>
+            <dd>We also look at page structure, content sections, trust points, calls to action, and the user path through each page, with recommendations for improving conversions alongside search visibility.</dd>
           </div>
-        </li>
-
-        <li class="plan-step">
-          <span class="plan-num" aria-hidden="true">04</span>
-          <div class="plan-copy">
-            <h3>Non-Core Page Setup</h3>
-            <p>Lower-priority pages are set up cleanly through a standard metadata and schema process, so they stay consistent with the larger site structure without requiring custom strategy on every page.</p>
+        </div>
+        <div class="plan-row">
+          <span class="plan-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3.8h6.4L19 8.4v9.4a1.8 1.8 0 0 1-1.8 1.8H8a1.8 1.8 0 0 1-1.8-1.8V5.6A1.8 1.8 0 0 1 8 3.8Z"/><path d="M14.4 3.8v4.6H19"/><path d="M3.4 7.6v11.8a2.2 2.2 0 0 0 2.2 2.2h9"/></svg></span>
+          <div class="plan-body">
+            <dt>Non-Core Page Setup</dt>
+            <dd>Lower-priority pages are set up cleanly through a standard metadata and schema process, so they stay consistent with the larger site structure without requiring custom strategy on every page.</dd>
           </div>
-        </li>
-
-        <li class="plan-step">
-          <span class="plan-num" aria-hidden="true">05</span>
-          <div class="plan-copy">
-            <h3>Continued Optimization</h3>
-            <p>We update metadata as pages, services, search intent, and business priorities change. Schema gets updated as content evolves, standards shift, and AI search behavior changes. Core pages get adjusted as SEO, AI search, usability, and strategy develop over time.</p>
-            <p>The goal is ongoing refinement so the site doesn't slowly fall out of alignment after launch.</p>
+        </div>
+        <div class="plan-row">
+          <span class="plan-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 12a8.2 8.2 0 0 1-13.9 5.9L3.8 15.6"/><path d="M3.8 12a8.2 8.2 0 0 1 13.9-5.9l2.5 2.3"/><path d="M20.2 3.9v4.5h-4.5M3.8 20.1v-4.5h4.5"/></svg></span>
+          <div class="plan-body">
+            <dt>Continued Optimization</dt>
+            <dd>We update metadata as pages, services, search intent, and business priorities change. Schema gets updated as content evolves, standards shift, and AI search behavior changes. Core pages get adjusted as SEO, AI search, usability, and strategy develop over time.</dd>
+            <dd>The goal is ongoing refinement so the site doesn't slowly fall out of alignment after launch.</dd>
           </div>
-        </li>
-      </ol>
-    </div>
+        </div>
+    </dl>
 
   </div>
 </section>
@@ -1868,9 +1842,8 @@ a{color:inherit;}
     /* Las clases se ponen desde aquí: si el script no corre, no hay nada
        oculto que revelar. */
     var selectors = [
-      /* El plan no está en esta lista: lo mueve el scroll, con su propia
-         línea de tiempo en CSS. */
       '.section-head > *', '.pillar',
+      '.plan-aside', '.plan-list',
       '.tile', '.landscape-note',
       '.stat',
       '.faq-item', '.close-inner > *'
