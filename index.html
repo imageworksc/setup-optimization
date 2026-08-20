@@ -783,7 +783,8 @@ a{color:inherit;}
   white-space:nowrap;
 }
 
-/* el marcador toma el vocabulario de la marca: contorno que se rellena */
+/* El mismo chevron de las FAQ: un solo gesto de "esto se abre" en toda la
+   página, en vez de un más aquí y un chevron abajo. */
 .fx{
   flex:none;
   display:grid;place-items:center;
@@ -792,12 +793,11 @@ a{color:inherit;}
   border-radius:50%;
   color:var(--green-ink);
   transition:transform .35s var(--ease), background-color .25s var(--ease),
-             border-color .25s var(--ease);
+             border-color .25s var(--ease), color .25s var(--ease);
 }
-.fx svg{stroke:currentColor;}
 summary:hover .fx{border-color:var(--green);background:var(--tint-green);}
 details[open] > summary .fx{
-  transform:rotate(45deg);
+  transform:rotate(180deg);
   background:var(--green);border-color:var(--green);
   color:#143c1f;
 }
@@ -895,57 +895,107 @@ details[open] > summary .fx{
 /* --------------------------------------------------------------------------
    FAQ — cerradas son hairlines; la abierta se levanta y se vuelve tarjeta
    -------------------------------------------------------------------------- */
-.faq{width:100%;max-width:860px;margin-inline:auto;}
-.faq details{
+.faq{
+  width:100%;
+  max-width:860px;
+  margin-inline:auto;
+}
+
+/* Cerradas son filetes callados; la abierta se sale de la lista y se vuelve
+   tarjeta, con la misma receta que el resto de tarjetas de la página. */
+.faq-item{
   border-top:1px solid var(--border);
   border-radius:var(--r);
-  transition:background .3s var(--ease), box-shadow .3s var(--ease), border-color .2s var(--ease);
+  transition:background .3s var(--ease), box-shadow .3s var(--ease),
+             border-color .2s var(--ease);
 }
-.faq details:last-of-type{border-bottom:1px solid var(--border);}
-.faq details[open]{
+.faq-item:last-child{border-bottom:1px solid var(--border);}
+.faq-item[open]{
   background:linear-gradient(180deg,var(--card-top),var(--card-bottom));
   box-shadow:var(--shadow-card);
   border-top-color:transparent;
 }
-.faq details[open] + details{border-top-color:transparent;}
-.faq details[open]:last-of-type{border-bottom-color:transparent;}
+/* Solo se ocultan los filetes que tocan la tarjeta abierta: el atajo también
+   se llevaría el borde de cierre de la lista cuando la abierta es la última. */
+.faq-item[open] + .faq-item{border-top-color:transparent;}
+.faq-item[open]:last-child{border-bottom-color:transparent;}
 
-.faq summary{
-  display:flex;align-items:center;justify-content:space-between;gap:24px;
-  list-style:none;cursor:pointer;
+.faq-item summary{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  list-style:none;
+  cursor:pointer;
   padding:22px 8px;
-  font-size:var(--step-1);font-weight:700;color:var(--navy);line-height:1.4;
+  font-size:var(--step-1);
+  font-weight:700;
+  color:var(--navy);
+  line-height:1.4;
   transition:color .2s var(--ease), padding .3s var(--ease);
 }
-.faq summary::-webkit-details-marker{display:none;}
-.faq summary:hover{color:var(--blue);}
-.faq details[open] summary{padding-inline:26px;color:var(--blue);}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary:hover{color:var(--blue);}
+.faq-item[open] summary{padding-inline:26px;color:var(--blue);}
 
-.faq .faq-body{padding:0 26px 28px;}
-.faq .faq-body p{font-size:var(--step-0);line-height:1.75;color:var(--muted);max-width:68ch;}
-.faq .faq-body p + p{margin-top:14px;}
-.faq .faq-body strong{color:var(--navy);font-weight:700;}
-.faq .faq-body a{color:var(--blue);font-weight:700;text-decoration:none;position:relative;}
-.faq .faq-body a::after{
+/* Un chevron con contorno que se rellena y se da la vuelta: la página ya habla
+   con flechas, así que el marcador usa ese vocabulario y no un más en círculo. */
+.faq-mark{
+  flex:none;
+  display:grid;
+  place-items:center;
+  inline-size:34px;
+  block-size:34px;
+  border:1.5px solid var(--border);
+  border-radius:50%;
+  color:var(--green-ink);
+  transition:transform .35s var(--ease), background-color .25s var(--ease),
+             border-color .25s var(--ease), color .25s var(--ease);
+}
+.faq-item summary:hover .faq-mark{
+  border-color:var(--green);
+  background:var(--tint-green);
+}
+.faq-item[open] .faq-mark{
+  transform:rotate(180deg);
+  background:var(--green);
+  border-color:var(--green);
+  color:#143c1f;
+}
+
+.faq-answer{
+  padding:0 26px 28px;
+  font-size:var(--step-0);
+  line-height:1.75;
+  color:var(--muted);
+}
+.faq-answer p{max-width:68ch;}
+.faq-answer p + p{margin-top:14px;}
+.faq-answer strong{color:var(--navy);font-weight:700;}
+.faq-answer a{color:var(--blue);font-weight:700;text-decoration:none;position:relative;}
+.faq-answer a::after{
   content:'';position:absolute;left:0;right:0;bottom:-3px;height:1.5px;
   background:currentColor;transform:scaleX(0);transform-origin:left;
   transition:transform .3s var(--ease);
 }
-.faq .faq-body a:hover::after{transform:scaleX(1);}
+.faq-answer a:hover::after{transform:scaleX(1);}
 
-.faq details[open] .faq-body{animation:faq-in .42s var(--ease) both;}
+/* La respuesta se asienta donde se abra: funciona con y sin la transición de
+   altura de abajo. */
+.faq-item[open] .faq-answer{animation:faq-in .42s var(--ease) both;}
 @keyframes faq-in{from{opacity:0;transform:translateY(-7px);}}
 
-/* altura animada donde el navegador la soporta, corte limpio donde no */
+/* Altura animada donde el navegador la soporta, corte limpio donde no.
+   Sin JavaScript en ninguno de los dos casos. */
 @supports (interpolate-size:allow-keywords){
   :root{interpolate-size:allow-keywords;}
-  .faq details::details-content,
+  .faq-item::details-content,
   .steps details::details-content{
     block-size:0;overflow:hidden;
     transition:block-size .34s var(--ease), content-visibility .34s allow-discrete;
     transition-behavior:allow-discrete;
   }
-  .faq details[open]::details-content,
+  .faq-item[open]::details-content,
   .steps details[open]::details-content{block-size:auto;}
 }
 
@@ -1360,7 +1410,7 @@ details[open] > summary .fx{
         <summary>
           <span class="step-num">1</span>
           <span class="step-title">Research Foundation</span>
-          <span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span>
+          <span class="fx"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </summary>
         <div class="step-body">
           <p>We research the keywords your buyers actually type and the AI-style questions they ask. That includes reviewing which competitors are showing up, mapping search intent across your homepage and core pages, and prioritizing pages based on your services, goals, and conversion value.</p>
@@ -1372,7 +1422,7 @@ details[open] > summary .fx{
         <summary>
           <span class="step-num">2</span>
           <span class="step-title">Site-Wide Search Setup</span>
-          <span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span>
+          <span class="fx"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </summary>
         <div class="step-body">
           <p>We build a site-wide metadata strategy covering page titles, descriptions, service labels, and page templates. Then we set up global schema for the business, website, services, breadcrumbs, and page relationships so search engines and AI systems can read the site as a connected whole.</p>
@@ -1385,7 +1435,7 @@ details[open] > summary .fx{
           <span class="step-num">3</span>
           <span class="step-title">Homepage &amp; Core Page Optimization</span>
           <span class="step-tag">Up to 10 pages</span>
-          <span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span>
+          <span class="fx"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </summary>
         <div class="step-body">
           <p>Each core page gets its own metadata and advanced schema structure, aligned to the keyword and AI prompt research. That means every page is built around the real buyer questions and AI-style searches it should support &mdash; not generic targets.</p>
@@ -1397,7 +1447,7 @@ details[open] > summary .fx{
         <summary>
           <span class="step-num">4</span>
           <span class="step-title">Non-Core Page Setup</span>
-          <span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span>
+          <span class="fx"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </summary>
         <div class="step-body">
           <p>Lower-priority pages are set up cleanly through a standard metadata and schema process, so they stay consistent with the larger site structure without requiring custom strategy on every page.</p>
@@ -1408,7 +1458,7 @@ details[open] > summary .fx{
         <summary>
           <span class="step-num">5</span>
           <span class="step-title">Continued Optimization</span>
-          <span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span>
+          <span class="fx"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </summary>
         <div class="step-body">
           <p>We update metadata as pages, services, search intent, and business priorities change. Schema gets updated as content evolves, standards shift, and AI search behavior changes. Core pages get adjusted as SEO, AI search, usability, and strategy develop over time.</p>
@@ -1469,70 +1519,70 @@ details[open] > summary .fx{
     </div>
 
     <div class="faq">
-      <details>
-        <summary>How Do I Set Up My Website to Rank on AI and SEO?<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
-        <div class="faq-body">
+      <details class="faq-item" name="setup-faq">
+        <summary>How Do I Set Up My Website to Rank on AI and SEO?<span class="faq-mark" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+        <div class="faq-answer">
           <p>Start with keyword research and AI prompt research to understand how buyers search and what AI systems pull from. Then build that into your page titles, meta descriptions, schema markup, heading structure, internal links, and core page content.</p>
           <p>The technical side matters too &mdash; crawlability, canonical tags, sitemap setup, and structured data all affect whether search engines and AI systems can read and recommend your pages.</p>
           <p>Most businesses benefit from working with a team that offers AI search optimization services alongside SEO setup, because the metadata, schema, and page structure all connect to the website's CMS, templates, and architecture.</p>
         </div>
       </details>
 
-      <details>
-        <summary>Is This the Same as SEO?<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
-        <div class="faq-body">
+      <details class="faq-item" name="setup-faq">
+        <summary>Is This the Same as SEO?<span class="faq-mark" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+        <div class="faq-answer">
           <p>No. This is the foundation work that prepares the website for SEO, AI search, content optimization, and link building. It sets up the structure, metadata, schema, technical signals, and core page alignment those efforts need.</p>
         </div>
       </details>
 
-      <details>
-        <summary>What Is AI Search Optimization?<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
-        <div class="faq-body">
+      <details class="faq-item" name="setup-faq">
+        <summary>What Is AI Search Optimization?<span class="faq-mark" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+        <div class="faq-answer">
           <p>AI search optimization is the process of setting up your website so AI systems &mdash; like Google AI Overviews, ChatGPT, and other AI-powered search tools &mdash; can clearly understand your business, services, and relevance when generating answers and recommendations.</p>
           <p>How do you optimize for AI search? It starts with the same structural work that supports SEO: schema markup, clear metadata, logical heading hierarchy, and well-organized content. The difference is that AI systems also pull from entity signals, structured data relationships, and the way your pages answer specific questions &mdash; so the setup has to account for both.</p>
         </div>
       </details>
 
-      <details>
-        <summary>How Many Pages Are Included?<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
-        <div class="faq-body">
+      <details class="faq-item" name="setup-faq">
+        <summary>How Many Pages Are Included?<span class="faq-mark" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+        <div class="faq-answer">
           <p>The homepage and up to 10 core pages are custom-optimized. Lower-priority pages receive standard metadata and schema setup through a consistent process.</p>
         </div>
       </details>
 
-      <details>
-        <summary>What Counts as a Core Page?<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
-        <div class="faq-body">
+      <details class="faq-item" name="setup-faq">
+        <summary>What Counts as a Core Page?<span class="faq-mark" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+        <div class="faq-answer">
           <p>Core pages usually include the homepage, main service pages, major solution pages, key industry pages, important location pages, and high-value conversion pages.</p>
         </div>
       </details>
 
-      <details>
-        <summary>What Happens to Non-Core Pages?<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
-        <div class="faq-body">
+      <details class="faq-item" name="setup-faq">
+        <summary>What Happens to Non-Core Pages?<span class="faq-mark" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+        <div class="faq-answer">
           <p>Non-core pages receive standard metadata and schema setup so they stay clean, consistent, and aligned with the larger website structure.</p>
         </div>
       </details>
 
-      <details>
-        <summary>Do You Update Metadata and Schema Over Time?<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
-        <div class="faq-body">
+      <details class="faq-item" name="setup-faq">
+        <summary>Do You Update Metadata and Schema Over Time?<span class="faq-mark" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+        <div class="faq-answer">
           <p><strong>Yes.</strong></p>
           <p>Metadata, schema, content, services, search behavior, and AI visibility standards change. Continued optimization keeps the foundation current.</p>
         </div>
       </details>
 
-      <details>
-        <summary>Do I Need This Before SEO or Link Building?<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
-        <div class="faq-body">
+      <details class="faq-item" name="setup-faq">
+        <summary>Do I Need This Before SEO or Link Building?<span class="faq-mark" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+        <div class="faq-answer">
           <p><strong>Ideally, yes.</strong></p>
           <p>SEO, AI search, content optimization, and link building work better when the website is already structured correctly.</p>
         </div>
       </details>
 
-      <details>
-        <summary>Can This Be Added to an Existing Website?<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
-        <div class="faq-body">
+      <details class="faq-item" name="setup-faq">
+        <summary>Can This Be Added to an Existing Website?<span class="faq-mark" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+        <div class="faq-answer">
           <p><strong>Yes.</strong></p>
           <p>SEO &amp; AI Search Setup can be part of a new website build, redesign, or improvement plan for an existing website.</p>
         </div>
@@ -1658,7 +1708,7 @@ details[open] > summary .fx{
       '.landscape', '.landscape-note',
       '.steps details', '.steps-cta',
       '.stat', '.stats-note', '.stats-cta',
-      '.faq details', '.close-inner > *'
+      '.faq-item', '.close-inner > *'
     ];
     var targets = document.querySelectorAll(selectors.join(','));
     if (!targets.length) return;
