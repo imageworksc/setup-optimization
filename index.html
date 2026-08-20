@@ -1111,11 +1111,13 @@ a{color:inherit;}
   gap:20px;text-align:center;
 }
 .close-inner h2{max-width:22ch;}
+/* El cierre es una sola línea de remate: a 780px partía en dos y dejaba un
+   huérfano de 110px. A 900 entra entera y rompe sola al estrecharse. */
 .close-inner p{
   font-size:var(--step-1);line-height:1.7;
   color:rgba(226,238,252,.82);
   width:100%;
-  max-width:780px;
+  max-width:900px;
   text-wrap:pretty;
 }
 .final .cta-row{margin-top:14px;justify-content:center;}
@@ -1518,7 +1520,6 @@ a{color:inherit;}
 <section class="band band--deep">
   <div class="wrap stack">
     <h2>Why ImageWorks?</h2>
-    <p class="lead"><strong>ImageWorks plans, designs, builds, hosts, maintains, and improves custom websites</strong> &mdash; so the search foundation is handled as part of the website itself, not pasted in after the fact.</p>
 
     <div class="stats">
       <div class="stat">
@@ -1633,9 +1634,8 @@ a{color:inherit;}
 <section class="band band--cta final" id="contact">
   <div class="wrap">
     <div class="close-inner">
-      <h2>Set Up Your Website Before SEO and AI Search Go to Work</h2>
-      <p>Before you invest more into SEO, AI search, content, or link building, make sure your website is structured correctly underneath.</p>
-      <p>SEO &amp; AI Search Setup gives your site the research, metadata, schema, technical setup, and page-level structure needed to support stronger search visibility and long-term growth.</p>
+      <h2>Get Your Site Ready for Modern Search.</h2>
+      <p>Research, metadata, schema, and page structure &mdash; built for stronger visibility and long-term growth.</p>
       <div class="cta-row">
         <a href="https://www.imageworkscreative.com/lets-grow-your-brand" class="btn btn--solid">Get Pricing &amp; Discuss Options
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
