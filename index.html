@@ -1,0 +1,1794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEO &amp; AI Search Setup | ImageWorks Creative</title>
+<meta name="description" content="AI search optimization services and SEO setup for your website. Metadata, schema, technical setup, and core page optimization for local service and B2B companies.">
+<meta name="theme-color" content="#143c66">
+<link rel="canonical" href="https://www.imageworkscreative.com/PLACEHOLDER-final-page-slug">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="SEO &amp; AI Search Setup | ImageWorks Creative">
+<meta property="og:description" content="AI search optimization services and SEO setup for your website. Metadata, schema, technical setup, and core page optimization for local service and B2B companies.">
+<meta property="og:url" content="https://www.imageworkscreative.com/PLACEHOLDER-final-page-slug">
+<meta property="og:image" content="https://www.imageworkscreative.com/assets/og/PLACEHOLDER-og-image.png">
+<meta property="og:site_name" content="ImageWorks Creative">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SEO &amp; AI Search Setup | ImageWorks Creative">
+<meta name="twitter:description" content="AI search optimization services and SEO setup for your website. Metadata, schema, technical setup, and core page optimization for local service and B2B companies.">
+<meta name="twitter:image" content="https://www.imageworkscreative.com/assets/og/PLACEHOLDER-og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&amp;display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================================
+   ImageWorks Creative — SEO & AI Search Setup
+   Sistema de diseño tomado de la página Website Maintenance Plans:
+   https://imageworksc.github.io/drupal-and-wordpress/
+   Mismo navbar, mismo pie, mismos tokens. Tema claro único.
+   ========================================================================== */
+
+:root{
+  color-scheme: light;
+
+  /* ---- marca ---- */
+  --navy:#143c66;
+  --navy-deep:#0a2c4d;
+  --blue:#1266b5;
+  --blue-bright:#1e6bb0;
+  --green:#80c34a;
+  --green-ink:#5c9a2e;
+  --ink:#1f2b3e;
+  --muted:#5a6b82;
+  --faint:#7d8ea1;
+  --nav-ink:#3d464d;
+
+  /* ---- superficies ---- */
+  --white:#ffffff;
+  --band-tint:#f2f5f9;
+  --band-tint-warm:#f1f3f6;
+  --card-top:#ffffff;
+  --card-bottom:#fcfdff;
+  --border:#e3eaf3;
+  --border-soft:#eef2f7;
+  --chip-blue:#c1daff;
+  --chip-green:#eaf6dd;
+  --tint-green:#eef6e6;
+  --tint-blue:#e5edf7;
+  --grey-soft:#e8edf4;
+  --grey-ink:#4f5f77;
+
+  --cta-band:linear-gradient(135deg,#1266b5,#0a2c4d);
+
+  /* ---- forma: la marca cuadra sus esquinas a 2px ---- */
+  --r:2px;
+
+  --shadow-card:0 1px 3px rgba(20,40,80,.08), 0 14px 34px rgba(20,40,80,.1);
+  --shadow-flat:0 1px 3px rgba(20,40,80,.07);
+  --shadow-lift:0 4px 12px rgba(20,40,80,.18);
+  --ring:0 0 0 3px rgba(128,195,74,.5), 0 0 0 1px rgba(20,60,102,.55);
+
+  /* ---- ritmo ---- */
+  --shell:1180px;
+  --gutter:clamp(22px,4vw,40px);
+  --band-y:clamp(64px,8vw,108px);
+  --nav-h:88px;
+  --measure:66ch;
+
+  /* ---- escala tipográfica ---- */
+  --step--1:clamp(12.5px,.18vw + 12px,13.5px);
+  --step-0:clamp(15.5px,.25vw + 15px,17px);
+  --step-1:clamp(16.5px,.4vw + 15.5px,18px);
+  --step-2:clamp(19px,.9vw + 17px,23px);
+  --step-3:clamp(28px,2.6vw + 18px,44px);
+  --step-4:clamp(34px,3vw + 20px,46px);
+
+  --ease:cubic-bezier(.16,.84,.44,1);
+}
+
+/* --------------------------------------------------------------------------
+   BASE
+   -------------------------------------------------------------------------- */
+*,*::before,*::after{box-sizing:border-box;}
+
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 16px);}
+
+body{
+  margin:0;
+  font-family:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  font-size:var(--step-0);
+  font-weight:400;
+  line-height:1.65;
+  color:var(--ink);
+  background:var(--white);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  /* clip, no hidden: hidden convertiría el body en contenedor de scroll y
+     rompería el header sticky */
+  overflow-x:clip;
+}
+
+h1,h2,h3,h4{
+  margin:0;
+  color:var(--navy);
+  font-weight:800;
+  line-height:1.15;
+  letter-spacing:-.018em;
+  text-wrap:balance;
+}
+p{margin:0;text-wrap:pretty;}
+ul,ol,dl,dd{margin:0;padding:0;}
+li{list-style:none;}
+figure,blockquote{margin:0;}
+img,svg{display:block;max-width:100%;}
+a{color:inherit;}
+
+::selection{background:rgba(128,195,74,.28);}
+
+:where(a,button,summary,details,input):focus-visible{
+  outline:none;
+  box-shadow:var(--ring);
+  border-radius:var(--r);
+}
+
+.sr-only,.visually-hidden{
+  position:absolute;
+  width:1px;height:1px;
+  margin:-1px;padding:0;
+  overflow:hidden;
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   LAYOUT — el sistema de bandas
+   -------------------------------------------------------------------------- */
+.wrap{
+  width:100%;
+  max-width:var(--shell);
+  margin-inline:auto;
+  padding-inline:var(--gutter);
+}
+
+.band{
+  padding-block:var(--band-y);
+  background:var(--white);
+}
+.band--tint{background:var(--band-tint);}
+.band--tint-b{background:var(--band-tint-warm);}
+.band--snug{padding-block:clamp(44px,4.6vw,64px);}
+
+/* La banda oscura de medio recorrido: azul marino profundo con el mismo campo
+   de puntos que el cierre, para que las dos zonas oscuras se lean como familia. */
+.band--navy{
+  position:relative;
+  overflow:hidden;
+  background:var(--navy-deep);
+  color:#fff;
+}
+.band--navy::before{
+  content:'';
+  position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px);
+  background-size:24px 24px;
+  pointer-events:none;
+}
+.band--navy > *{position:relative;}
+.band--navy h2,.band--navy h3{color:#fff;}
+
+/* El cierre es la banda #cta de la marca: degradado con campo de puntos encima. */
+.band--cta{
+  position:relative;
+  overflow:hidden;
+  padding-block:clamp(72px,8vw,112px);
+  background:var(--cta-band);
+  color:#fff;
+}
+.band--cta::before{
+  content:'';
+  position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px);
+  background-size:24px 24px;
+  pointer-events:none;
+}
+.band--cta > *{position:relative;}
+.band--cta h2,.band--cta h3{color:#fff;}
+
+/* --------------------------------------------------------------------------
+   COMPONENTES DE TIPO
+   -------------------------------------------------------------------------- */
+.sec-title,h2{
+  font-size:var(--step-3);
+  letter-spacing:-.018em;
+}
+.lead{
+  font-size:var(--step-1);
+  line-height:1.7;
+  max-width:var(--measure);
+  color:var(--muted);
+}
+.lead strong{color:var(--navy);font-weight:700;}
+.band--cta .lead,.band--navy .lead{color:rgba(226,238,252,.82);}
+.band--cta .lead strong,.band--navy .lead strong{color:#fff;}
+
+/* Regla verde bajo la palabra clave: el recurso de énfasis de la marca. */
+.hl{
+  font-weight:700;
+  color:var(--navy);
+  background-image:linear-gradient(var(--green),var(--green));
+  background-size:100% 3px;
+  background-position:0 calc(100% - 1px);
+  background-repeat:no-repeat;
+  padding-bottom:3px;
+}
+
+/* --------------------------------------------------------------------------
+   BOTONES Y ENLACES
+   -------------------------------------------------------------------------- */
+.btn{
+  display:inline-flex;
+  align-items:center;justify-content:center;
+  gap:11px;
+  height:54px;
+  padding-inline:26px;
+  border-radius:var(--r);
+  border:1.5px solid transparent;
+  font:inherit;
+  font-size:16px;font-weight:700;line-height:1;
+  text-decoration:none;
+  white-space:nowrap;
+  cursor:pointer;
+  transition:transform .25s var(--ease), background-color .25s ease,
+             border-color .25s ease, box-shadow .25s ease, color .25s ease;
+}
+.btn:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift);}
+.btn:active{transform:translateY(-1px);}
+.btn svg{flex:none;transition:transform .25s var(--ease);}
+.btn:hover svg{transform:translateX(4px);}
+
+.btn--solid{background:var(--green);border-color:var(--green);color:#fff;}
+.btn--solid:hover{filter:brightness(1.04);}
+
+.btn--quiet{background:transparent;border-color:var(--border);color:var(--navy);font-weight:600;}
+.btn--quiet:hover{border-color:#c3d6ea;}
+
+.band--cta .btn--solid{
+  height:58px;
+  padding-inline:36px;
+  font-size:17px;
+  box-shadow:0 1px 2px rgba(20,40,80,.14);
+}
+
+.btn-row,.close-inner .cta-row{display:flex;flex-wrap:wrap;gap:14px;}
+
+/* La marca subraya sus enlaces con una regla que crece desde la izquierda. */
+.iw-link{position:relative;text-decoration:none;}
+.iw-link::after{
+  content:'';
+  position:absolute;left:0;right:0;bottom:-3px;
+  height:1.5px;
+  background:currentColor;
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .3s var(--ease);
+}
+.iw-link:hover::after{transform:scaleX(1);}
+
+/* --------------------------------------------------------------------------
+   NAV — la barra con desplegables al pasar
+   -------------------------------------------------------------------------- */
+.site-header{
+  position:sticky;top:0;z-index:120;
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  transition:box-shadow .35s ease;
+}
+.site-header[data-stuck="true"]{box-shadow:0 6px 24px rgba(15,36,64,.10);}
+
+.nav__inner{
+  max-width:1400px;margin:0 auto;padding:0 40px;
+  display:flex;align-items:center;justify-content:space-between;
+  height:var(--nav-h);
+}
+.brand{display:inline-flex;align-items:center;text-decoration:none;}
+.brand img{display:block;height:44px;width:auto;}
+
+.menu{display:flex;align-items:center;gap:4px;list-style:none;}
+.menu__item{position:relative;}
+.menu__link{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:32px 18px;
+  text-decoration:none;
+  color:var(--ink);
+  font:inherit;font-weight:600;font-size:15px;letter-spacing:-.005em;
+  cursor:pointer;background:none;border:0;position:relative;
+  transition:color .15s ease;
+}
+.menu__link:hover,.menu__item.is-open .menu__link{color:var(--navy);}
+.menu__link::after{
+  content:'';
+  position:absolute;left:18px;right:18px;bottom:24px;
+  block-size:2px;background:var(--green);
+  transform:scaleX(0);transform-origin:left center;
+  transition:transform .2s ease;
+}
+.menu__link:hover::after,.menu__item.is-open .menu__link::after{transform:scaleX(1);}
+.menu__chev{inline-size:10px;block-size:10px;transition:transform .2s ease;}
+.menu__item.is-open .menu__chev{transform:rotate(180deg);}
+
+.menu__link--outline{
+  margin-left:12px;
+  padding:11px 26px;
+  border:2px solid var(--green);
+  border-radius:6px;
+  color:var(--green-ink);
+  transition:background-color .15s ease, color .15s ease;
+}
+.menu__link--outline::after{display:none;}
+.menu__link--outline:hover{background:var(--green);color:#fff;}
+
+/* ------------------------------- desplegables ------------------------------- */
+.dropdown{
+  position:absolute;top:100%;left:-8px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:12px;
+  min-width:408px;
+  box-shadow:
+    0 1px 2px rgba(20,60,102,.04),
+    0 8px 24px -6px rgba(20,60,102,.12),
+    0 24px 48px -12px rgba(20,60,102,.10);
+  opacity:0;visibility:hidden;transform:translateY(6px);
+  transition:opacity .16s ease, transform .16s cubic-bezier(.2,.8,.3,1), visibility .16s;
+}
+.menu__item.is-open .dropdown{opacity:1;visibility:visible;transform:translateY(0);}
+/* los dos últimos se saldrían por el borde derecho si se abrieran a la izquierda */
+.menu__item:nth-last-child(-n+2) .dropdown{left:auto;right:-8px;}
+.dropdown--narrow{min-width:252px;}
+.dropdown--flat{padding-block:17px;}
+.dropdown--flat .dropdown__link{padding-block:11px;}
+.dropdown__list{list-style:none;}
+.dropdown__section-label + .dropdown__list{padding-left:14px;}
+
+.dropdown__link{
+  position:relative;
+  display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;
+  column-gap:17px;
+  padding:10px 17px;
+  text-decoration:none;
+  color:#58657a;font-weight:600;font-size:15px;line-height:1.3;
+  border-radius:7px;
+  transition:background-color .12s ease, color .12s ease;
+}
+.dropdown__link > .dropdown__badge{margin-left:auto;}
+.dropdown__link-accent{
+  display:block;flex-basis:100%;margin-top:2px;
+  font-size:11.5px;font-weight:500;line-height:1.3;color:#8b95a5;
+  transition:color .12s ease;
+}
+/* una marca verde entra por la izquierda, el mismo gesto de los enlaces */
+.dropdown__link::before{
+  content:'';
+  position:absolute;left:4px;top:50%;
+  inline-size:3px;block-size:70%;
+  border-radius:2px;background:var(--green);
+  transform:translateY(-50%) scaleY(0);
+  transition:transform .15s cubic-bezier(.2,.8,.3,1);
+}
+.dropdown__link:hover{background:#dcebfa;color:var(--navy);}
+.dropdown__link:hover .dropdown__link-accent{color:var(--blue);}
+.dropdown__link:hover::before{transform:translateY(-50%) scaleY(1);}
+/* la página actual, marcada dentro de su propio desplegable */
+.dropdown__link[aria-current="page"]{background:#eef6e6;color:var(--navy);}
+.dropdown__link[aria-current="page"]::before{transform:translateY(-50%) scaleY(1);}
+
+.dropdown__section-label{
+  display:flex;align-items:center;gap:12px;
+  padding:12px 17px 7px;
+  font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:#4a7bab;
+}
+.dropdown__section-label::after{content:'';flex:1;block-size:1px;background:var(--border);}
+.dropdown__section-label--next{margin-top:22px;}
+.dropdown__badge{
+  display:inline-block;align-self:center;
+  padding:3px 8.5px;border-radius:4px;
+  font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  line-height:1.3;white-space:nowrap;
+  color:var(--green-ink);background:var(--chip-green);
+}
+
+/* --------------------------- la pantalla pequeña --------------------------- */
+.nav-toggle{display:none;}
+
+@media (max-width:1024px){
+  :root{--nav-h:72px;}
+  .nav__inner{padding:0 20px;}
+  .brand img{height:36px;}
+
+  .nav-toggle{
+    display:inline-flex;flex-direction:column;justify-content:center;gap:5px;
+    inline-size:44px;block-size:44px;
+    margin-right:-10px;padding:0 10px;
+    border:0;background:transparent;cursor:pointer;
+  }
+  .nav-toggle span{
+    display:block;inline-size:24px;block-size:2px;border-radius:2px;
+    background:var(--navy);
+    transition:transform .3s ease, opacity .2s ease;
+  }
+  .nav-open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-open .nav-toggle span:nth-child(2){opacity:0;}
+  .nav-open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  .menu{
+    display:none;
+    position:absolute;top:var(--nav-h);left:0;right:0;
+    flex-direction:column;align-items:stretch;gap:0;
+    max-height:calc(100vh - var(--nav-h));overflow-y:auto;
+    padding:4px 20px 18px;
+    background:#fff;
+    box-shadow:0 14px 30px rgba(15,36,64,.12);
+  }
+  .nav-open .menu{display:flex;}
+  .menu__item{border-top:1px solid var(--border-soft);}
+  .menu__item:first-child{border-top:0;}
+  .menu__link{inline-size:100%;justify-content:space-between;padding:15px 2px;font-size:16px;}
+  .menu__link::after{display:none;}
+  .menu__chev{display:none;}
+
+  /* desplegado, no flotante: un objetivo táctil dentro de un panel */
+  .dropdown{
+    position:static;opacity:1;visibility:visible;transform:none;
+    min-width:0;padding:0 0 12px;border:0;border-radius:0;box-shadow:none;
+  }
+  .dropdown__link{padding:10px 8px;font-size:14.5px;}
+  .dropdown__link::before{left:0;}
+  .dropdown__section-label{padding:10px 8px 6px;}
+  .dropdown__section-label--next{margin-top:10px;}
+  .menu__link--outline{margin:12px 0 0;justify-content:center;padding:13px 26px;}
+}
+
+/* --------------------------------------------------------------------------
+   HERO — terreno claro con lavados de color a la deriva
+   -------------------------------------------------------------------------- */
+.hero{
+  position:relative;
+  isolation:isolate;
+  display:flex;align-items:center;
+  overflow:hidden;
+  min-height:min(70vh,560px);
+  padding-block:clamp(56px,6vw,84px);
+  /* el terreno entra en el tinte de la banda siguiente, que arranca justo en
+     el color donde este acaba: la unión no se ve */
+  background:linear-gradient(180deg,
+    var(--white) 0%,
+    var(--white) 56%,
+    var(--band-tint) 100%);
+}
+.hero-wash{
+  position:absolute;top:0;left:0;right:0;
+  block-size:100%;
+  z-index:-1;
+  overflow:hidden;pointer-events:none;
+  mask-image:linear-gradient(180deg,#000 0,#000 52%,transparent 88%);
+  -webkit-mask-image:linear-gradient(180deg,#000 0,#000 52%,transparent 88%);
+}
+.hero-wash span{position:absolute;left:50%;will-change:transform;}
+.hero-wash__g{
+  inline-size:1015px;block-size:830px;
+  margin-left:-987px;top:-315px;
+  background:radial-gradient(closest-side ellipse at center, rgba(128,195,74,.24), rgba(128,195,74,0) 100%);
+  animation:washG 71s linear infinite;
+}
+.hero-wash__b{
+  inline-size:1090px;block-size:910px;
+  margin-left:-75px;top:-295px;
+  background:radial-gradient(closest-side ellipse at center, rgba(18,102,181,.21), rgba(18,102,181,0) 100%);
+  animation:washB 97s linear infinite;
+}
+.hero-wash__s{
+  inline-size:1170px;block-size:860px;
+  margin-left:-545px;top:200px;
+  background:radial-gradient(closest-side ellipse at center, rgba(46,140,214,.21), rgba(46,140,214,0) 100%);
+  animation:washS 127s linear infinite;
+}
+.hero-wash::after{
+  content:'';
+  position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(102deg,
+    rgba(255,255,255,0) 30%, rgba(255,255,255,.34) 50%, rgba(255,255,255,0) 70%);
+  background-repeat:no-repeat;
+  background-size:260% 100%;
+  animation:heroSheen 47s ease-in-out infinite;
+}
+@keyframes washG{
+  0%{transform:translate3d(0,0,0);}
+  25%{transform:translate3d(0,22%,0);}
+  50%{transform:translate3d(0,6%,0);}
+  75%{transform:translate3d(0,-14%,0);}
+  100%{transform:translate3d(0,0,0);}
+}
+@keyframes washB{
+  0%{transform:translate3d(0,0,0);}
+  25%{transform:translate3d(0,26%,0);}
+  50%{transform:translate3d(0,-8%,0);}
+  75%{transform:translate3d(0,-24%,0);}
+  100%{transform:translate3d(0,0,0);}
+}
+@keyframes washS{
+  0%{transform:translate3d(0,0,0);}
+  25%{transform:translate3d(0,-16%,0);}
+  50%{transform:translate3d(0,10%,0);}
+  75%{transform:translate3d(0,20%,0);}
+  100%{transform:translate3d(0,0,0);}
+}
+@keyframes heroSheen{
+  0%,100%{background-position:124% 0;}
+  50%{background-position:-24% 0;}
+}
+
+.hero-inner{position:relative;text-align:left;}
+.hero-main{display:flex;flex-direction:column;align-items:flex-start;gap:22px;}
+
+.hero h1{
+  font-size:clamp(min(9vw,36px),4.2vw + 8px,60px);
+  line-height:1.08;
+  letter-spacing:-.035em;
+  max-width:19ch;
+  text-wrap:balance;
+}
+/* la frase de apoyo es el acento verde del sistema, no un segundo titular */
+.hero .subhead{
+  font-size:clamp(18px,.9vw + 15px,23px);
+  font-weight:800;
+  line-height:1.25;
+  letter-spacing:-.018em;
+  color:var(--green-ink);
+}
+.hero p.body{
+  font-size:clamp(16.5px,.55vw + 15px,18.5px);
+  line-height:1.65;
+  font-weight:500;
+  max-width:56ch;
+  color:var(--muted);
+  text-wrap:pretty;
+}
+.hero .btn{margin-top:10px;}
+/* la nota de audiencia: una línea fina bajo la llamada, no un párrafo más */
+.hero .hero-note{
+  margin-top:8px;
+  padding-top:22px;
+  border-top:1px solid var(--border);
+  max-width:56ch;
+  font-size:15.5px;font-weight:600;line-height:1.6;
+  color:var(--faint);
+}
+
+@media (prefers-reduced-motion:no-preference){
+  [data-hero-anim="on"] .hero h1,
+  [data-hero-anim="on"] .hero .subhead,
+  [data-hero-anim="on"] .hero p.body,
+  [data-hero-anim="on"] .hero .btn,
+  [data-hero-anim="on"] .hero .hero-note{animation:hero-in .8s var(--ease) backwards;}
+  [data-hero-anim="on"] .hero h1{animation-delay:.06s;}
+  [data-hero-anim="on"] .hero .subhead{animation-delay:.26s;}
+  [data-hero-anim="on"] .hero p.body{animation-delay:.40s;}
+  [data-hero-anim="on"] .hero .btn{animation-delay:.54s;}
+  [data-hero-anim="on"] .hero .hero-note{animation-delay:.64s;}
+}
+@keyframes hero-in{from{opacity:0;transform:translateY(14px);}}
+
+/* --------------------------------------------------------------------------
+   CABECERA DE SECCIÓN
+   -------------------------------------------------------------------------- */
+.section-head{max-width:820px;margin-bottom:clamp(36px,4vw,50px);}
+.section-head p{margin-top:14px;font-size:clamp(17px,1.4vw,20px);font-weight:500;color:var(--muted);}
+.sh-center{text-align:center;max-width:840px;margin-inline:auto;}
+.sh-center p{margin-inline:auto;}
+.band--navy .section-head p,.band--cta .section-head p{color:rgba(226,238,252,.82);}
+
+/* El rótulo pequeño sobre el titular. */
+.kicker{
+  display:inline-block;
+  font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  padding:5px 12px;
+  border-radius:var(--r);
+  background:var(--tint-green);color:var(--green-ink);
+  margin-bottom:16px;
+}
+.band--navy .kicker,.band--cta .kicker{background:rgba(128,195,74,.18);color:#cfe9b4;}
+
+/* --------------------------------------------------------------------------
+   PILARES — la definición, en un solo hilo de lectura
+   El pilar 1 es este servicio, así que se lleva la tarjeta con el filete
+   verde; los otros dos bajan a filas de hairline.
+   -------------------------------------------------------------------------- */
+.pillar-lead{
+  width:100%;
+  max-width:880px;
+  padding:clamp(26px,3vw,34px) clamp(24px,3vw,36px);
+  border-left:3px solid var(--green);
+  border-radius:0 var(--r) var(--r) 0;
+  background:linear-gradient(180deg,var(--card-top),var(--card-bottom));
+  box-shadow:var(--shadow-card);
+}
+.pillar-tag{
+  font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--green-ink);
+  margin-bottom:12px;
+}
+.pillar-lead p{
+  font-size:var(--step-1);line-height:1.7;color:var(--muted);
+  max-width:64ch;
+}
+.pillar-lead p + p{margin-top:14px;}
+.pillar-lead strong{color:var(--navy);font-weight:800;}
+
+.pillar-rows{max-width:880px;margin-top:clamp(24px,3vw,34px);}
+.pillar-row{padding:26px 0;border-bottom:1px solid var(--border);}
+.pillar-row:first-child{border-top:1px solid var(--border);}
+.pillar-row .pillar-tag{color:var(--faint);margin-bottom:8px;}
+.pillar-row p{font-size:var(--step-1);line-height:1.7;color:var(--muted);max-width:72ch;}
+.pillar-row strong{color:var(--navy);font-weight:700;}
+
+/* --------------------------------------------------------------------------
+   DÓNDE APARECES — el collage de superficies de búsqueda
+   -------------------------------------------------------------------------- */
+.landscape{
+  display:flex;flex-wrap:wrap;
+  justify-content:center;align-items:flex-start;
+  gap:16px;
+  max-width:1060px;
+  margin:clamp(28px,3.4vw,44px) auto clamp(24px,3vw,34px);
+}
+.tile{
+  /* 7 × 136 + 6 × 16 = 1048: las siete teselas entran en una sola fila dentro
+     de los 1060px del collage. A 140 la última se cae de línea. */
+  width:136px;
+  padding:18px 12px 14px;
+  border-radius:var(--r);
+  text-align:center;
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 1px 3px rgba(0,0,0,.2), 0 14px 30px rgba(0,0,0,.26);
+  transform:translateY(var(--y,0));
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.tile:hover{transform:translateY(calc(var(--y,0px) - 6px));box-shadow:0 1px 3px rgba(0,0,0,.22), 0 22px 44px rgba(0,0,0,.32);}
+.tile--green{background:linear-gradient(160deg,var(--green-ink),var(--green));}
+.tile--blue{background:linear-gradient(160deg,var(--blue),var(--blue-bright));}
+.tile--navy{background:linear-gradient(160deg,#1c4b7d,#0f2e52);}
+.tile--muted{background:rgba(255,255,255,.05);border:1.5px dashed rgba(255,255,255,.3);box-shadow:none;}
+.tile-icon{width:72px;height:62px;margin:0 auto 8px;display:block;}
+.tile-label{display:block;font-size:12.5px;font-weight:700;color:#fff;line-height:1.3;}
+.tile-label--muted{color:rgba(255,255,255,.62);font-weight:600;}
+
+.landscape-note{
+  max-width:760px;margin-inline:auto;
+  text-align:center;
+  font-size:var(--step-0);line-height:1.7;
+  color:rgba(226,238,252,.72);
+}
+
+@media (max-width:900px){
+  .landscape{max-width:600px;gap:14px;}
+  .tile{--y:0px !important;}
+}
+@media (max-width:700px){
+  .tile{width:130px;padding:16px 10px 12px;}
+  .tile-icon{width:60px;height:52px;}
+  .tile-label{font-size:11.5px;}
+}
+
+/* --------------------------------------------------------------------------
+   EL PLAN — acordeón numerado. Mismo vocabulario que las FAQ (hairline
+   cerrado, tarjeta abierta), con el número en el chip verde de la marca.
+   -------------------------------------------------------------------------- */
+.steps{width:100%;max-width:880px;}
+.steps details{
+  border-top:1px solid var(--border);
+  border-radius:var(--r);
+  transition:background .3s var(--ease), box-shadow .3s var(--ease), border-color .2s var(--ease);
+}
+.steps details:last-of-type{border-bottom:1px solid var(--border);}
+.steps details[open]{
+  background:linear-gradient(180deg,var(--card-top),var(--card-bottom));
+  box-shadow:var(--shadow-card);
+  border-top-color:transparent;
+}
+.steps details[open] + details{border-top-color:transparent;}
+.steps details[open]:last-of-type{border-bottom-color:transparent;}
+
+.steps summary{
+  display:flex;align-items:center;gap:18px;
+  list-style:none;cursor:pointer;
+  padding:22px 8px;
+  transition:padding .3s var(--ease);
+}
+.steps summary::-webkit-details-marker{display:none;}
+.steps details[open] summary{padding-inline:26px;}
+
+.step-num{
+  flex:none;
+  display:grid;place-items:center;
+  inline-size:34px;block-size:34px;
+  border-radius:var(--r);
+  background:var(--tint-green);color:var(--green-ink);
+  font-size:14px;font-weight:800;line-height:1;
+  transition:background-color .25s var(--ease), color .25s var(--ease);
+}
+.steps details[open] .step-num{background:var(--green);color:#fff;}
+
+.step-title{
+  flex:1;
+  font-size:var(--step-2);font-weight:800;color:var(--navy);
+  line-height:1.3;letter-spacing:-.018em;
+  transition:color .2s var(--ease);
+}
+.steps summary:hover .step-title{color:var(--blue);}
+.steps details[open] .step-title{color:var(--blue);}
+
+.step-tag{
+  flex:none;
+  font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  padding:5px 12px;
+  border-radius:var(--r);
+  background:var(--tint-blue);color:var(--blue);
+  white-space:nowrap;
+}
+
+/* el marcador toma el vocabulario de la marca: contorno que se rellena */
+.fx{
+  flex:none;
+  display:grid;place-items:center;
+  inline-size:34px;block-size:34px;
+  border:1.5px solid var(--border);
+  border-radius:50%;
+  color:var(--green-ink);
+  transition:transform .35s var(--ease), background-color .25s var(--ease),
+             border-color .25s var(--ease);
+}
+.fx svg{stroke:currentColor;}
+summary:hover .fx{border-color:var(--green);background:var(--tint-green);}
+details[open] > summary .fx{
+  transform:rotate(45deg);
+  background:var(--green);border-color:var(--green);
+  color:#143c1f;
+}
+
+.step-body{padding:0 26px 30px 78px;}
+.step-body p{font-size:var(--step-0);line-height:1.75;color:var(--muted);max-width:68ch;}
+.step-body p + p{margin-top:14px;}
+.steps details[open] .step-body{animation:faq-in .42s var(--ease) both;}
+
+.steps-cta{
+  display:flex;flex-wrap:wrap;gap:14px;align-items:center;
+  max-width:880px;
+  margin-top:clamp(32px,3.6vw,44px);
+  padding-top:28px;
+  border-top:1px solid var(--border);
+}
+
+@media (max-width:640px){
+  .steps summary{flex-wrap:wrap;gap:12px;}
+  .step-title{flex-basis:calc(100% - 100px);font-size:17.5px;}
+  .step-tag{order:4;margin-left:52px;}
+  .step-body{padding-left:26px;}
+}
+
+/* --------------------------------------------------------------------------
+   POR QUÉ IMAGEWORKS — la fila de cifras, separada por hairlines
+   -------------------------------------------------------------------------- */
+.stats{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  max-width:1000px;margin-inline:auto;
+}
+.stat{padding:0 28px;border-left:1px solid var(--border);}
+.stat:first-child{border-left:0;}
+.stat-num{
+  display:block;
+  font-size:clamp(32px,3vw,44px);font-weight:800;color:var(--navy);
+  line-height:1;letter-spacing:-.03em;
+  margin-bottom:12px;
+}
+.stat-label{display:block;font-size:15px;font-weight:500;line-height:1.55;color:var(--muted);}
+
+.stats-note{
+  max-width:820px;margin:clamp(34px,4vw,48px) auto 0;
+  text-align:center;
+  font-size:var(--step-1);line-height:1.7;color:var(--muted);
+}
+.stats-note strong{color:var(--navy);font-weight:700;}
+.stats-cta{display:flex;justify-content:center;margin-top:clamp(26px,3vw,34px);}
+
+@media (max-width:820px){
+  .stats{grid-template-columns:1fr 1fr;gap:34px 0;}
+  .stat{padding:0 20px;}
+  .stat:nth-child(odd){border-left:0;}
+}
+@media (max-width:520px){
+  .stats{grid-template-columns:1fr;gap:30px;}
+  .stat{padding:0;border-left:0;}
+  .stat + .stat{padding-top:30px;border-top:1px solid var(--border);}
+}
+
+/* --------------------------------------------------------------------------
+   FAQ — cerradas son hairlines; la abierta se levanta y se vuelve tarjeta
+   -------------------------------------------------------------------------- */
+.faq{width:100%;max-width:860px;margin-inline:auto;}
+.faq details{
+  border-top:1px solid var(--border);
+  border-radius:var(--r);
+  transition:background .3s var(--ease), box-shadow .3s var(--ease), border-color .2s var(--ease);
+}
+.faq details:last-of-type{border-bottom:1px solid var(--border);}
+.faq details[open]{
+  background:linear-gradient(180deg,var(--card-top),var(--card-bottom));
+  box-shadow:var(--shadow-card);
+  border-top-color:transparent;
+}
+.faq details[open] + details{border-top-color:transparent;}
+.faq details[open]:last-of-type{border-bottom-color:transparent;}
+
+.faq summary{
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  list-style:none;cursor:pointer;
+  padding:22px 8px;
+  font-size:var(--step-1);font-weight:700;color:var(--navy);line-height:1.4;
+  transition:color .2s var(--ease), padding .3s var(--ease);
+}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary:hover{color:var(--blue);}
+.faq details[open] summary{padding-inline:26px;color:var(--blue);}
+
+.faq .faq-body{padding:0 26px 28px;}
+.faq .faq-body p{font-size:var(--step-0);line-height:1.75;color:var(--muted);max-width:68ch;}
+.faq .faq-body p + p{margin-top:14px;}
+.faq .faq-body strong{color:var(--navy);font-weight:700;}
+.faq .faq-body a{color:var(--blue);font-weight:700;text-decoration:none;position:relative;}
+.faq .faq-body a::after{
+  content:'';position:absolute;left:0;right:0;bottom:-3px;height:1.5px;
+  background:currentColor;transform:scaleX(0);transform-origin:left;
+  transition:transform .3s var(--ease);
+}
+.faq .faq-body a:hover::after{transform:scaleX(1);}
+
+.faq details[open] .faq-body{animation:faq-in .42s var(--ease) both;}
+@keyframes faq-in{from{opacity:0;transform:translateY(-7px);}}
+
+/* altura animada donde el navegador la soporta, corte limpio donde no */
+@supports (interpolate-size:allow-keywords){
+  :root{interpolate-size:allow-keywords;}
+  .faq details::details-content,
+  .steps details::details-content{
+    block-size:0;overflow:hidden;
+    transition:block-size .34s var(--ease), content-visibility .34s allow-discrete;
+    transition-behavior:allow-discrete;
+  }
+  .faq details[open]::details-content,
+  .steps details[open]::details-content{block-size:auto;}
+}
+
+/* --------------------------------------------------------------------------
+   CIERRE
+   -------------------------------------------------------------------------- */
+.close-inner{
+  display:flex;flex-direction:column;align-items:center;
+  gap:20px;text-align:center;
+}
+.close-inner h2{max-width:22ch;}
+.close-inner p{
+  font-size:var(--step-1);line-height:1.7;
+  color:rgba(226,238,252,.82);
+  width:100%;
+  max-width:1030px;
+  text-wrap:pretty;
+}
+.final .cta-row{margin-top:14px;justify-content:center;}
+
+/* --------------------------------------------------------------------------
+   PIE
+   -------------------------------------------------------------------------- */
+.site-footer{
+  background:var(--navy-deep);
+  color:#fff;
+  padding:104px 40px 0;
+  font-size:16px;line-height:1.5;
+}
+.foot-grid{
+  max-width:1340px;margin-inline:auto;
+  display:grid;grid-template-columns:1fr 1.5fr 1.15fr;gap:80px;align-items:start;
+}
+.foot-grid > *{min-width:0;}
+.foot-logo{width:168px;max-width:100%;height:auto;}
+.foot-label{display:flex;align-items:center;gap:8px;font-weight:600;margin-top:20px;}
+.foot-logo + .foot-label{margin-top:26px;}
+.foot-label svg{flex:none;}
+.foot-detail{margin:4px 0 0 24px;color:rgba(255,255,255,.85);}
+.foot-detail a{color:#fff;font-weight:700;text-decoration:none;}
+.foot-social{display:flex;gap:10px;margin-top:26px;}
+.foot-social a{
+  display:grid;place-items:center;
+  width:40px;height:40px;
+  border-radius:var(--r);
+  background:rgba(255,255,255,.12);color:#fff;text-decoration:none;
+  transition:background .25s ease;
+}
+.foot-social a:hover{background:var(--green);}
+.foot-menus{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+.foot-head{font-size:16px;font-weight:700;color:var(--green);letter-spacing:.5px;}
+.foot-head + .foot-list{margin-top:16px;}
+.foot-list{display:flex;flex-direction:column;gap:10px;}
+.foot-list a{font-size:16px;color:#fff;text-decoration:none;width:fit-content;}
+.foot-menus .foot-list + .foot-head{margin-top:28px;}
+.foot-map{
+  border-radius:var(--r);overflow:hidden;
+  box-shadow:0 1px 3px rgba(20,40,80,.12), 0 10px 26px rgba(20,40,80,.12);
+}
+.foot-map img{width:100%;height:auto;}
+.foot-news-title{margin-top:40px;font-size:16px;font-weight:700;}
+.foot-news-sub{margin-top:6px;font-size:15px;color:rgba(255,255,255,.85);}
+.foot-form{margin-top:12px;display:flex;gap:8px;max-width:320px;}
+.foot-form input{
+  flex:1;min-width:0;height:40px;
+  padding:0 12px;border:none;border-radius:var(--r);
+  font-family:inherit;font-size:14px;color:#333;
+}
+.foot-form button{
+  width:48px;height:40px;border:none;border-radius:var(--r);
+  background:var(--green);color:#fff;cursor:pointer;
+  display:grid;place-items:center;font-size:18px;line-height:1;
+  transition:transform .25s var(--ease), filter .25s ease;
+}
+.foot-form button:hover{transform:translateY(-2px);filter:brightness(1.05);}
+.foot-base{
+  max-width:1340px;margin:48px auto 0;
+  padding:22px 0;
+  border-top:1px solid rgba(255,255,255,.18);
+  text-align:center;font-size:14px;line-height:1.6;color:rgba(255,255,255,.85);
+}
+.foot-base a{color:#fff;text-decoration:none;}
+.foot-base-links{margin-top:8px;}
+.foot-tail{height:50px;}
+
+/* La marca apila esto a 1024px, en paso con el nav. */
+@media (max-width:1024px){
+  .site-footer{padding:72px 44px 0;}
+  .foot-grid{grid-template-columns:1fr;gap:52px;justify-items:center;}
+  .foot-grid > *{width:100%;max-width:480px;margin-inline:auto;text-align:left;}
+  .foot-form{max-width:100%;}
+}
+@media (max-width:520px){
+  .site-footer{padding:60px 34px 0;}
+  .foot-menus{grid-template-columns:1fr;gap:40px;}
+}
+
+/* --------------------------------------------------------------------------
+   REVEAL
+   -------------------------------------------------------------------------- */
+[data-anim="on"] .reveal{
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity .7s var(--ease), transform .7s var(--ease);
+  transition-delay:var(--reveal-delay,0ms);
+}
+[data-anim="on"] .reveal.is-revealed{opacity:1;transform:none;}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;}
+  html{scroll-behavior:auto;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     NAV — idéntico al de la página de referencia
+     PRODUCCIÓN: cambiar los src de assets/ por las rutas del sitio
+     ============================================================ -->
+<header class="site-header" id="top" data-nav>
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="ImageWorks Creative">
+      <img src="https://imageworksc.github.io/drupal-and-wordpress/assets/logo.png" alt="ImageWorks Creative">
+    </a>
+
+    <ul class="menu nav-links" id="nav-links">
+      <li class="menu__item" data-menu="web">
+        <button class="menu__link" type="button" aria-haspopup="true" aria-expanded="false">
+          Web
+          <svg class="menu__chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="dropdown">
+          <div class="dropdown__section-label">Web Design</div>
+          <ul class="dropdown__list">
+            <li><a href="/" class="dropdown__link">Custom Website Design<span class="dropdown__link-accent">Drupal / WordPress</span></a></li>
+            <li><a href="/" class="dropdown__link">AI Website Design</a></li>
+            <li><a href="/" class="dropdown__link">Homepage Facelift<span class="dropdown__link-accent">Low Cost · Major Impact</span></a></li>
+          </ul>
+          <div class="dropdown__section-label dropdown__section-label--next">Website Services</div>
+          <ul class="dropdown__list">
+            <li><a href="/" class="dropdown__link">Website Content</a></li>
+            <li><a href="/" class="dropdown__link">Website Evolution<span class="dropdown__badge">Essential</span></a></li>
+            <li><a href="/" class="dropdown__link">Website Maintenance<span class="dropdown__link-accent">Drupal &amp; WordPress</span></a></li>
+            <li><a href="/" class="dropdown__link">Advanced Website Animations</a></li>
+            <li><a href="/" class="dropdown__link">Creative Support Hours</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="menu__item" data-menu="marketing">
+        <button class="menu__link" type="button" aria-haspopup="true" aria-expanded="false">
+          Marketing
+          <svg class="menu__chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="dropdown">
+          <div class="dropdown__section-label">SEO + AIO <span class="dropdown__section-label-note">(Modern Search)</span></div>
+          <ul class="dropdown__list">
+            <li><a href="#top" class="dropdown__link" aria-current="page">Website Setup &amp; Optimization</a></li>
+            <li><a href="/seo-aio-services/" class="dropdown__link">On-Page Content Optimization</a></li>
+            <li><a href="/seo-aio-services/" class="dropdown__link">Link Building</a></li>
+            <li><a href="/seo-aio-services/" class="dropdown__link">Citations &amp; Entity Signals<span class="dropdown__link-accent">Local · SEO · AI Trust</span></a></li>
+          </ul>
+          <div class="dropdown__section-label dropdown__section-label--next">Local &amp; Paid Ads <span class="dropdown__section-label-note">(PPC)</span></div>
+          <ul class="dropdown__list">
+            <li><a href="/" class="dropdown__link">Google Profile &amp; Maps<span class="dropdown__badge">Rank Locally</span></a></li>
+            <li><a href="/" class="dropdown__link">Location &amp; Service-Area Pages</a></li>
+            <li><a href="/" class="dropdown__link">Google &amp; Meta Ads</a></li>
+            <li><a href="/" class="dropdown__link">Social Media Reels &amp; Ads</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="menu__item" data-menu="plans">
+        <button class="menu__link" type="button" aria-haspopup="true" aria-expanded="false">
+          Plans
+          <svg class="menu__chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="dropdown dropdown--narrow dropdown--flat">
+          <ul class="dropdown__list">
+            <li><a href="/" class="dropdown__link">Website Plans</a></li>
+            <li><a href="/" class="dropdown__link">Marketing Plans</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="menu__item"><a href="/" class="menu__link">Branding</a></li>
+      <li class="menu__item"><a href="/" class="menu__link">Portfolio</a></li>
+
+      <li class="menu__item" data-menu="about">
+        <button class="menu__link" type="button" aria-haspopup="true" aria-expanded="false">
+          About
+          <svg class="menu__chev" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="dropdown dropdown--narrow dropdown--flat">
+          <ul class="dropdown__list">
+            <li><a href="/" class="dropdown__link">About Us</a></li>
+            <li><a href="/" class="dropdown__link">Customer's Lounge</a></li>
+            <li><a href="/" class="dropdown__link">Blog</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="menu__item"><a href="#contact" class="menu__link menu__link--outline">Contact</a></li>
+    </ul>
+
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-controls="nav-links" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" data-hero>
+  <div class="hero-wash" aria-hidden="true"><span class="hero-wash__g"></span><span class="hero-wash__b"></span><span class="hero-wash__s"></span></div>
+  <div class="wrap hero-inner">
+    <div class="hero-main">
+      <h1>SEO &amp; AI Search Setup</h1>
+      <div class="subhead">+ Ongoing Technical SEO &amp; Updates</div>
+      <p class="body">Search engines and AI systems need a clear foundation before they can understand, rank, or recommend your website. We research, set up, and optimize that foundation &mdash; then keep it current as search evolves.</p>
+      <a href="https://www.imageworkscreative.com/lets-grow-your-brand" class="btn btn--solid">Get Pricing &amp; Discuss Options
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
+      <p class="hero-note">Built for local service businesses, professional firms, and B2B companies.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DEFINICIÓN — LOS 3 PILARES
+     ============================================================ -->
+<section class="band band--tint">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Definition</span>
+      <h2>What Is SEO &amp; AI Search Setup?</h2>
+      <p>Understanding the 3 pillars of search.</p>
+    </div>
+
+    <div class="pillar-lead">
+      <div class="pillar-tag">Pillar 1 &middot; This Service</div>
+      <p><strong>SEO &amp; AI Search Setup</strong> is the site-wide and page-by-page <span class="hl">metadata, schema,</span> and <span class="hl">technical SEO</span> that tell search engines and AI systems what your business is, what each page covers, and how it all connects.</p>
+      <p>It includes ongoing updates as your site, services, and search behavior change.</p>
+    </div>
+
+    <div class="pillar-rows">
+      <div class="pillar-row">
+        <div class="pillar-tag">Pillar 2</div>
+        <p><strong>On-Page Content</strong> &mdash; the writing, heading structure, keyword strategy, content organization, and conversion optimization on each page. Everything that happens on your website to help it rank and get referenced.</p>
+      </div>
+      <div class="pillar-row">
+        <div class="pillar-tag">Pillar 3</div>
+        <p><strong>Link Building</strong> &mdash; backlinks, link-earning content, citations, and entity signals that build authority off your website. This is what moves the needle once setup and content are done &mdash; it pushes you past competitors who've done the same work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DÓNDE APARECES — el terreno de la búsqueda moderna
+     ============================================================ -->
+<section class="band band--navy">
+  <div class="wrap">
+    <div class="section-head sh-center">
+      <span class="kicker">Where You Show Up</span>
+      <h2>SEO &amp; AI Search Setup positions your business across Modern Search.</h2>
+    </div>
+
+    <div class="landscape">
+
+      <div class="tile tile--green" style="--y:10px;">
+        <svg viewBox="0 0 56 48" class="tile-icon" aria-hidden="true">
+          <!-- mini map with roads + pin above three listing rows -->
+          <rect x="8" y="6" width="40" height="22" rx="4" fill="#ffffff" opacity="0.2"/>
+          <path d="M8 18 Q20 12 30 17 T48 14" stroke="#ffffff" stroke-width="1.6" fill="none" opacity="0.55"/>
+          <path d="M18 6 Q22 16 16 28" stroke="#ffffff" stroke-width="1.6" fill="none" opacity="0.4"/>
+          <path d="M28 9 c-3.6 0 -6.5 2.9 -6.5 6.5 c0 4.7 6.5 11 6.5 11 s6.5 -6.3 6.5 -11 c0 -3.6 -2.9 -6.5 -6.5 -6.5 z" fill="#ffffff"/>
+          <circle cx="28" cy="15.5" r="2.6" fill="#4a8628"/>
+          <g opacity="0.9">
+            <rect x="10" y="32" width="4" height="4" rx="2" fill="#ffffff"/>
+            <rect x="17" y="33" width="29" height="2.2" rx="1.1" fill="#ffffff" opacity="0.8"/>
+            <rect x="10" y="39" width="4" height="4" rx="2" fill="#ffffff" opacity="0.55"/>
+            <rect x="17" y="40" width="22" height="2.2" rx="1.1" fill="#ffffff" opacity="0.45"/>
+          </g>
+        </svg>
+        <span class="tile-label">Maps 3-Pack</span>
+      </div>
+
+      <div class="tile tile--blue" style="--y:-14px;">
+        <svg viewBox="0 0 56 48" class="tile-icon" aria-hidden="true">
+          <!-- snippet box lifted above the rest of the results -->
+          <rect x="8" y="6" width="40" height="22" rx="4" fill="#ffffff"/>
+          <rect x="13" y="11" width="22" height="3" rx="1.5" fill="#1266b5"/>
+          <rect x="13" y="17" width="30" height="2.4" rx="1.2" fill="#9cc3e8"/>
+          <rect x="13" y="22" width="25" height="2.4" rx="1.2" fill="#9cc3e8"/>
+          <path d="M40 3 l1.4 3.2 3.2 1.4 -3.2 1.4 -1.4 3.2 -1.4 -3.2 -3.2 -1.4 3.2 -1.4 z" fill="#ffffff" opacity="0.9"/>
+          <rect x="12" y="34" width="32" height="2.4" rx="1.2" fill="#ffffff" opacity="0.5"/>
+          <rect x="12" y="40" width="26" height="2.4" rx="1.2" fill="#ffffff" opacity="0.3"/>
+        </svg>
+        <span class="tile-label">Featured Snippet</span>
+      </div>
+
+      <div class="tile tile--navy" style="--y:18px;">
+        <svg viewBox="0 0 56 48" class="tile-icon" aria-hidden="true">
+          <!-- search bar + ranked results, top one highlighted -->
+          <rect x="10" y="5" width="36" height="7" rx="3.5" fill="#ffffff" opacity="0.35"/>
+          <circle cx="16" cy="8.5" r="2" fill="none" stroke="#ffffff" stroke-width="1.3" opacity="0.8"/>
+          <line x1="17.6" y1="10.1" x2="19.2" y2="11.7" stroke="#ffffff" stroke-width="1.3" opacity="0.8" stroke-linecap="round"/>
+          <g>
+            <rect x="10" y="17" width="36" height="9" rx="2.5" fill="#80C34A"/>
+            <rect x="14" y="20" width="18" height="2.6" rx="1.3" fill="#0a2340"/>
+          </g>
+          <rect x="10" y="30" width="36" height="6" rx="2" fill="#ffffff" opacity="0.4"/>
+          <rect x="10" y="39" width="36" height="6" rx="2" fill="#ffffff" opacity="0.2"/>
+        </svg>
+        <span class="tile-label">Organic Listings</span>
+      </div>
+
+      <div class="tile tile--green" style="--y:-8px;">
+        <svg viewBox="0 0 56 48" class="tile-icon" aria-hidden="true">
+          <!-- sparkle writing an answer, lines appearing progressively -->
+          <path d="M17 6 l2.2 5 5 2.2 -5 2.2 -2.2 5 -2.2 -5 -5 -2.2 5 -2.2 z" fill="#ffffff"/>
+          <path d="M30 9 l1.2 2.7 2.7 1.2 -2.7 1.2 -1.2 2.7 -1.2 -2.7 -2.7 -1.2 2.7 -1.2 z" fill="#ffffff" opacity="0.65"/>
+          <rect x="10" y="25" width="36" height="2.6" rx="1.3" fill="#ffffff"/>
+          <rect x="10" y="31" width="30" height="2.6" rx="1.3" fill="#ffffff" opacity="0.7"/>
+          <rect x="10" y="37" width="23" height="2.6" rx="1.3" fill="#ffffff" opacity="0.45"/>
+          <rect x="35" y="37" width="4" height="2.6" rx="1.3" fill="#0a2340" opacity="0.6"/>
+        </svg>
+        <span class="tile-label">AI Overview</span>
+      </div>
+
+      <div class="tile tile--blue" style="--y:14px;">
+        <svg viewBox="0 0 56 48" class="tile-icon" aria-hidden="true">
+          <!-- conversation: question bubble + answering bubble w/ typing dots -->
+          <path d="M9 10c0-2.2 1.8-4 4-4h18c2.2 0 4 1.8 4 4v7c0 2.2-1.8 4-4 4H18l-5 4.5V21h0c-2.2 0-4-1.8-4-4z" fill="#ffffff" opacity="0.5"/>
+          <rect x="14" y="10" width="16" height="2.2" rx="1.1" fill="#0a3a6b" opacity="0.5"/>
+          <rect x="14" y="14.5" width="11" height="2.2" rx="1.1" fill="#0a3a6b" opacity="0.35"/>
+          <path d="M47 26c0-2.2-1.8-4-4-4H25c-2.2 0-4 1.8-4 4v7c0 2.2 1.8 4 4 4h13l5 4.5V37c2.2 0 4-1.8 4-4z" fill="#ffffff"/>
+          <circle cx="28" cy="29.5" r="1.8" fill="#1266b5"/>
+          <circle cx="34" cy="29.5" r="1.8" fill="#1266b5" opacity="0.65"/>
+          <circle cx="40" cy="29.5" r="1.8" fill="#1266b5" opacity="0.35"/>
+        </svg>
+        <span class="tile-label">ChatGPT</span>
+      </div>
+
+      <div class="tile tile--navy" style="--y:-12px;">
+        <svg viewBox="0 0 56 48" class="tile-icon" aria-hidden="true">
+          <!-- four-point star in an orbit with satellite dots -->
+          <ellipse cx="28" cy="24" rx="19" ry="10" fill="none" stroke="#ffffff" stroke-width="1.3" opacity="0.4" transform="rotate(-18 28 24)"/>
+          <path d="M28 10 C29 19 33 23 42 24 C33 25 29 29 28 38 C27 29 23 25 14 24 C23 23 27 19 28 10 Z" fill="#ffffff"/>
+          <circle cx="45" cy="15" r="2.2" fill="#80C34A"/>
+          <circle cx="11" cy="33" r="1.7" fill="#ffffff" opacity="0.6"/>
+        </svg>
+        <span class="tile-label">Gemini</span>
+      </div>
+
+      <div class="tile tile--muted" style="--y:8px;">
+        <svg viewBox="0 0 56 48" class="tile-icon" aria-hidden="true">
+          <!-- empty ad slot: dashed frame, AD chip, ghost lines -->
+          <rect x="8" y="8" width="40" height="32" rx="5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.6" stroke-dasharray="4 4"/>
+          <rect x="13" y="13" width="15" height="7" rx="2" fill="rgba(255,255,255,0.15)"/>
+          <text x="20.5" y="18.4" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="5.5" font-weight="800" fill="rgba(255,255,255,0.6)" letter-spacing="0.5">AD</text>
+          <rect x="13" y="26" width="30" height="2.4" rx="1.2" fill="rgba(255,255,255,0.3)"/>
+          <rect x="13" y="32" width="22" height="2.4" rx="1.2" fill="rgba(255,255,255,0.18)"/>
+        </svg>
+        <span class="tile-label tile-label--muted">Sponsored (not this service)</span>
+      </div>
+
+    </div>
+
+    <p class="landscape-note">SEO shows up in organic listings and Maps. AI search shows up in ChatGPT, Gemini, and AI Overviews. This is the setup work that makes both possible.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     EL PLAN
+     ============================================================ -->
+<section class="band" id="plan">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">How We Build It</span>
+      <h2>SEO &amp; AI Search Setup Plan</h2>
+    </div>
+
+    <div class="steps">
+
+      <details open>
+        <summary>
+          <span class="step-num">1</span>
+          <span class="step-title">Research Foundation</span>
+          <span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span>
+        </summary>
+        <div class="step-body">
+          <p>We research the keywords your buyers actually type and the AI-style questions they ask. That includes reviewing which competitors are showing up, mapping search intent across your homepage and core pages, and prioritizing pages based on your services, goals, and conversion value.</p>
+          <p>When applicable, we also run a top-ranking competitor review to see what's working in your space and where the gaps are.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="step-num">2</span>
+          <span class="step-title">Site-Wide Search Setup</span>
+          <span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span>
+        </summary>
+        <div class="step-body">
+          <p>We build a site-wide metadata strategy covering page titles, descriptions, service labels, and page templates. Then we set up global schema for the business, website, services, breadcrumbs, and page relationships so search engines and AI systems can read the site as a connected whole.</p>
+          <p>We also review crawl settings, indexing, sitemaps, canonical tags, and any launch-blocking technical issues that could hold back visibility.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="step-num">3</span>
+          <span class="step-title">Homepage &amp; Core Page Optimization</span>
+          <span class="step-tag">Up to 10 pages</span>
+          <span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span>
+        </summary>
+        <div class="step-body">
+          <p>Each core page gets its own metadata and advanced schema structure, aligned to the keyword and AI prompt research. That means every page is built around the real buyer questions and AI-style searches it should support &mdash; not generic targets.</p>
+          <p>We also look at page structure, content sections, trust points, calls to action, and the user path through each page, with recommendations for improving conversions alongside search visibility.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="step-num">4</span>
+          <span class="step-title">Non-Core Page Setup</span>
+          <span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span>
+        </summary>
+        <div class="step-body">
+          <p>Lower-priority pages are set up cleanly through a standard metadata and schema process, so they stay consistent with the larger site structure without requiring custom strategy on every page.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="step-num">5</span>
+          <span class="step-title">Continued Optimization</span>
+          <span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span>
+        </summary>
+        <div class="step-body">
+          <p>We update metadata as pages, services, search intent, and business priorities change. Schema gets updated as content evolves, standards shift, and AI search behavior changes. Core pages get adjusted as SEO, AI search, usability, and strategy develop over time.</p>
+          <p>The goal is ongoing refinement so the site doesn't slowly fall out of alignment after launch.</p>
+        </div>
+      </details>
+
+    </div>
+
+    <div class="steps-cta">
+      <a href="https://www.imageworkscreative.com/lets-grow-your-brand" class="btn btn--solid">Get Pricing &amp; Discuss Options
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     POR QUÉ IMAGEWORKS — la instantánea de experiencia
+     ============================================================ -->
+<section class="band band--tint">
+  <div class="wrap">
+    <div class="section-head sh-center">
+      <span class="kicker">Experience Snapshot</span>
+      <h2>Why ImageWorks?</h2>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-num">28</span>
+        <span class="stat-label">years building local and B2B websites in the USA</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">1,100+</span>
+        <span class="stat-label">custom websites successfully launched</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">20+</span>
+        <span class="stat-label">industry awards for websites we have built</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">100+</span>
+        <span class="stat-label">combined years of Drupal and WordPress experience</span>
+      </div>
+    </div>
+
+    <p class="stats-note"><strong>ImageWorks plans, designs, builds, hosts, maintains, and improves custom websites</strong> &mdash; so the search foundation is handled as part of the website itself, not pasted in after the fact.</p>
+
+    <div class="stats-cta">
+      <a href="https://www.imageworkscreative.com/lets-grow-your-brand" class="btn btn--solid">Get Pricing &amp; Discuss Options
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="band band--tint-b">
+  <div class="wrap">
+    <div class="section-head sh-center">
+      <span class="kicker">Questions</span>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+
+    <div class="faq">
+      <details>
+        <summary>How Do I Set Up My Website to Rank on AI and SEO?<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+        <div class="faq-body">
+          <p>Start with keyword research and AI prompt research to understand how buyers search and what AI systems pull from. Then build that into your page titles, meta descriptions, schema markup, heading structure, internal links, and core page content.</p>
+          <p>The technical side matters too &mdash; crawlability, canonical tags, sitemap setup, and structured data all affect whether search engines and AI systems can read and recommend your pages.</p>
+          <p>Most businesses benefit from working with a team that offers AI search optimization services alongside SEO setup, because the metadata, schema, and page structure all connect to the website's CMS, templates, and architecture.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Is This the Same as SEO?<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+        <div class="faq-body">
+          <p>No. This is the foundation work that prepares the website for SEO, AI search, content optimization, and link building. It sets up the structure, metadata, schema, technical signals, and core page alignment those efforts need.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What Is AI Search Optimization?<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+        <div class="faq-body">
+          <p>AI search optimization is the process of setting up your website so AI systems &mdash; like Google AI Overviews, ChatGPT, and other AI-powered search tools &mdash; can clearly understand your business, services, and relevance when generating answers and recommendations.</p>
+          <p>How do you optimize for AI search? It starts with the same structural work that supports SEO: schema markup, clear metadata, logical heading hierarchy, and well-organized content. The difference is that AI systems also pull from entity signals, structured data relationships, and the way your pages answer specific questions &mdash; so the setup has to account for both.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>How Many Pages Are Included?<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+        <div class="faq-body">
+          <p>The homepage and up to 10 core pages are custom-optimized. Lower-priority pages receive standard metadata and schema setup through a consistent process.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What Counts as a Core Page?<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+        <div class="faq-body">
+          <p>Core pages usually include the homepage, main service pages, major solution pages, key industry pages, important location pages, and high-value conversion pages.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What Happens to Non-Core Pages?<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+        <div class="faq-body">
+          <p>Non-core pages receive standard metadata and schema setup so they stay clean, consistent, and aligned with the larger website structure.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Do You Update Metadata and Schema Over Time?<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+        <div class="faq-body">
+          <p><strong>Yes.</strong></p>
+          <p>Metadata, schema, content, services, search behavior, and AI visibility standards change. Continued optimization keeps the foundation current.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Do I Need This Before SEO or Link Building?<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+        <div class="faq-body">
+          <p><strong>Ideally, yes.</strong></p>
+          <p>SEO, AI search, content optimization, and link building work better when the website is already structured correctly.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Can This Be Added to an Existing Website?<span class="fx"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1266b5" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span></summary>
+        <div class="faq-body">
+          <p><strong>Yes.</strong></p>
+          <p>SEO &amp; AI Search Setup can be part of a new website build, redesign, or improvement plan for an existing website.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CIERRE
+     ============================================================ -->
+<section class="band band--cta final" id="contact">
+  <div class="wrap">
+    <div class="close-inner">
+      <h2>Set Up Your Website Before SEO and AI Search Go to Work</h2>
+      <p>Before you invest more into SEO, AI search, content, or link building, make sure your website is structured correctly underneath.</p>
+      <p>SEO &amp; AI Search Setup gives your site the research, metadata, schema, technical setup, and page-level structure needed to support stronger search visibility and long-term growth.</p>
+      <div class="cta-row">
+        <a href="https://www.imageworkscreative.com/lets-grow-your-brand" class="btn btn--solid">Get Pricing &amp; Discuss Options
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============================================================
+     PIE — idéntico al de la página de referencia
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="foot-grid">
+
+    <div>
+      <img class="foot-logo" src="https://imageworksc.github.io/drupal-and-wordpress/assets/footer-logo.png" alt="ImageWorks Creative">
+
+      <div class="foot-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#80c34a" stroke-width="2.4" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Ashburn, VA Location</div>
+      <div class="foot-detail">44679 Endicott Dr Suite 300<br>Unit 580 | Ashburn, VA 20147</div>
+
+      <div class="foot-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#80c34a" stroke-width="2.4" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>St. Petersburg, FL Location</div>
+      <div class="foot-detail">433 Central Ave<br>4th floor | St. Petersburg, FL 33701</div>
+
+      <div class="foot-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#80c34a" stroke-width="2.4" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Questions? Quote?</div>
+      <div class="foot-detail">Call or text us: <a href="tel:+17039287309">(703) 928-7309</a></div>
+
+      <div class="foot-social">
+        <a href="/" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.52 1.49-3.91 3.78-3.91 1.1 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.44 2.9h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94Z"/></svg></a>
+        <a href="/" aria-label="X"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.22-6.82-5.97 6.82H1.66l7.73-8.84L1.24 2.25H8.08l4.71 6.23 5.45-6.23Zm-1.16 17.52h1.83L7.01 4.13H5.04l12.04 15.64Z"/></svg></a>
+        <a href="/" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.55V9h3.57v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></a>
+        <a href="/" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.72 3.72 0 0 1-1.38-.9 3.72 3.72 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16ZM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.12 1.38C1.35 2.68.93 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.38 2.12.66.66 1.33 1.08 2.12 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.72 2.12-1.38.66-.66 1.08-1.33 1.38-2.12.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.72-1.46-1.38-2.12A5.92 5.92 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.41-10.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z"/></svg></a>
+      </div>
+    </div>
+
+    <div class="foot-menus">
+      <div>
+        <div class="foot-head">Services</div>
+        <div class="foot-list">
+          <a class="iw-link" href="/">Web Design</a>
+          <a class="iw-link" href="/">Digital Marketing</a>
+          <a class="iw-link" href="/">Branding</a>
+          <a class="iw-link" href="/">Website &amp; Marketing Plans</a>
+          <a class="iw-link" href="/">Website Maintenance</a>
+          <a class="iw-link" href="/">Content Writing</a>
+          <a class="iw-link" href="/">Google Maps Optimization</a>
+          <a class="iw-link" href="/seo-aio-services/">SEO + AIO Optimization</a>
+        </div>
+      </div>
+      <div>
+        <div class="foot-head">Company</div>
+        <div class="foot-list">
+          <a class="iw-link" href="/">Our Work</a>
+          <a class="iw-link" href="/">About</a>
+          <a class="iw-link" href="/">Awards</a>
+          <a class="iw-link" href="/">Testimonials</a>
+          <a class="iw-link" href="#contact">Contact</a>
+        </div>
+        <div class="foot-head">Platform Expertise</div>
+        <div class="foot-list">
+          <a class="iw-link" href="/">Drupal</a>
+          <a class="iw-link" href="/">WordPress</a>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="foot-map"><img src="https://imageworksc.github.io/drupal-and-wordpress/assets/footer-map.png" alt="Map of ImageWorks Creative locations"></div>
+      <div class="foot-news-title">Subscribe to Our Newsletter</div>
+      <div class="foot-news-sub">Marketing insights &amp; company news sent straight to your inbox</div>
+      <form class="foot-form" onsubmit="return false">
+        <label class="sr-only" for="foot-email">Email Address</label>
+        <input id="foot-email" type="email" placeholder="Email Address">
+        <button type="submit" aria-label="Subscribe">&rarr;</button>
+      </form>
+    </div>
+
+  </div>
+
+  <div class="foot-base">
+    © 2026 ImageWorks Creative, a full-service marketing company, branding firm, and web design agency since 1997. All rights reserved.
+    <div class="foot-base-links"><a class="iw-link" href="/">Sitemap</a> &nbsp;|&nbsp; <a class="iw-link" href="/">Privacy Policy</a></div>
+  </div>
+  <div class="foot-tail"></div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var root = document.documentElement;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* ------------------------------------------------------------------
+     Entradas. Una sola vez por elemento, y solo si el navegador soporta
+     IntersectionObserver y el visitante no ha pedido movimiento reducido.
+     ------------------------------------------------------------------ */
+  function setupReveals() {
+    /* Las clases se ponen desde aquí: si el script no corre, no hay nada
+       oculto que revelar. */
+    var selectors = [
+      '.section-head > *', '.pillar-lead', '.pillar-row',
+      /* el collage entra entero: cada tesela lleva su propio desplazamiento
+         en `--y` y revelarlas una a una lo anularía */
+      '.landscape', '.landscape-note',
+      '.steps details', '.steps-cta',
+      '.stat', '.stats-note', '.stats-cta',
+      '.faq details', '.close-inner > *'
+    ];
+    var targets = document.querySelectorAll(selectors.join(','));
+    if (!targets.length) return;
+
+    var groups = {};
+    Array.prototype.forEach.call(targets, function (el) {
+      el.classList.add('reveal');
+      var key = el.parentNode.className || 'root';
+      groups[key] = (groups[key] || 0) + 1;
+      el.style.setProperty('--reveal-delay', Math.min((groups[key] - 1) * 80, 320) + 'ms');
+    });
+
+    if (reduced.matches || !('IntersectionObserver' in window)) {
+      Array.prototype.forEach.call(targets, function (el) { el.classList.add('is-revealed'); });
+      root.setAttribute('data-anim', 'on');
+      return;
+    }
+
+    root.setAttribute('data-anim', 'on');
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-revealed');
+        io.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+
+    Array.prototype.forEach.call(targets, function (el) { io.observe(el); });
+
+    /* El rootMargin negativo dejaría sin disparar lo que quede en la última
+       franja de una página desplazada del todo. */
+    function revealRemainder() {
+      var atBottom = window.innerHeight + window.scrollY >=
+                     document.documentElement.scrollHeight - 2;
+      if (!atBottom) return;
+      Array.prototype.forEach.call(targets, function (el) {
+        if (el.classList.contains('is-revealed')) return;
+        el.classList.add('is-revealed');
+        io.unobserve(el);
+      });
+      window.removeEventListener('scroll', revealRemainder);
+    }
+    window.addEventListener('scroll', revealRemainder, { passive: true });
+  }
+
+  /* La entrada escalonada del hero, solo si hay hero en la página. */
+  function setupHero() {
+    if (document.querySelector('[data-hero]')) root.setAttribute('data-hero-anim', 'on');
+  }
+
+  /* ------------------------------------------------------------------
+     La barra: sombra al quedarse pegada, y el panel de la hamburguesa.
+     ------------------------------------------------------------------ */
+  function setupHeader() {
+    var header = document.querySelector('.site-header');
+    if (!header) return;
+
+    var ticking = false;
+    function update() {
+      ticking = false;
+      header.setAttribute('data-stuck', window.scrollY > 12 ? 'true' : 'false');
+    }
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }, { passive: true });
+    update();
+
+    var toggle = header.querySelector('.nav-toggle');
+    var links = header.querySelector('.nav-links');
+    if (!toggle || !links) return;
+
+    function setOpen(open) {
+      header.classList.toggle('nav-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    toggle.addEventListener('click', function (event) {
+      event.stopPropagation();
+      setOpen(!header.classList.contains('nav-open'));
+    });
+    links.addEventListener('click', function (event) {
+      if (event.target.closest('a')) setOpen(false);
+    });
+    document.addEventListener('click', function (event) {
+      if (header.classList.contains('nav-open') && !header.contains(event.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') setOpen(false);
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 1024) setOpen(false);
+    }, { passive: true });
+  }
+
+  /* ------------------------------------------------------------------
+     Los desplegables. Apuntar a un elemento de primer nivel lo abre y
+     cierra los demás; al salir se espera un momento, para que cruzar el
+     hueco entre el botón y el panel no lo cierre.
+
+     Bajo el punto de corte los paneles quedan desplegados por CSS y los
+     botones se dejan en paz: no hay nada que abrir.
+     ------------------------------------------------------------------ */
+  function setupMenu() {
+    var items = Array.prototype.slice.call(
+      document.querySelectorAll('.menu__item[data-menu]')
+    );
+    if (!items.length) return;
+
+    var stacked = window.matchMedia('(max-width: 1024px)');
+    var timer = null;
+
+    function closeAll() {
+      items.forEach(function (item) {
+        item.classList.remove('is-open');
+        var btn = item.querySelector('.menu__link');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    items.forEach(function (item) {
+      var btn = item.querySelector('.menu__link');
+      if (!btn) return;
+
+      function open() {
+        if (stacked.matches) return;
+        window.clearTimeout(timer);
+        closeAll();
+        item.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+
+      item.addEventListener('pointerenter', open, { passive: true });
+      item.addEventListener('pointerleave', function () {
+        if (stacked.matches) return;
+        window.clearTimeout(timer);
+        timer = window.setTimeout(closeAll, 140);
+      }, { passive: true });
+
+      btn.addEventListener('focus', open);
+      btn.addEventListener('click', function (event) {
+        event.preventDefault();
+        if (stacked.matches) return;
+        if (item.classList.contains('is-open')) closeAll(); else open();
+      });
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!event.target.closest('.menu__item')) closeAll();
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') closeAll();
+    });
+    stacked.addEventListener('change', closeAll);
+  }
+
+  setupHero();
+  setupReveals();
+  setupHeader();
+  setupMenu();
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "How do I set up my website to rank on AI and SEO?", "acceptedAnswer": {"@type": "Answer", "text": "Start with keyword research and AI prompt research to understand how buyers search and what AI systems pull from. Then build that into your page titles, meta descriptions, schema markup, heading structure, internal links, and core page content. The technical side matters too — crawlability, canonical tags, sitemap setup, and structured data all affect whether search engines and AI systems can read and recommend your pages. Most businesses benefit from working with a team that offers AI search optimization services alongside SEO setup, because the metadata, schema, and page structure all connect to the website's CMS, templates, and architecture."}},
+    {"@type": "Question", "name": "Is this the same as SEO?", "acceptedAnswer": {"@type": "Answer", "text": "No. This is the foundation work that prepares the website for SEO, AI search, content optimization, and link building. It sets up the structure, metadata, schema, technical signals, and core page alignment those efforts need."}},
+    {"@type": "Question", "name": "What is AI search optimization?", "acceptedAnswer": {"@type": "Answer", "text": "AI search optimization is the process of setting up your website so AI systems — like Google AI Overviews, ChatGPT, and other AI-powered search tools — can clearly understand your business, services, and relevance when generating answers and recommendations. How do you optimize for AI search? It starts with the same structural work that supports SEO: schema markup, clear metadata, logical heading hierarchy, and well-organized content. The difference is that AI systems also pull from entity signals, structured data relationships, and the way your pages answer specific questions — so the setup has to account for both."}},
+    {"@type": "Question", "name": "How many pages are included?", "acceptedAnswer": {"@type": "Answer", "text": "The homepage and up to 10 core pages are custom-optimized. Lower-priority pages receive standard metadata and schema setup through a consistent process."}},
+    {"@type": "Question", "name": "What counts as a core page?", "acceptedAnswer": {"@type": "Answer", "text": "Core pages usually include the homepage, main service pages, major solution pages, key industry pages, important location pages, and high-value conversion pages."}},
+    {"@type": "Question", "name": "What happens to non-core pages?", "acceptedAnswer": {"@type": "Answer", "text": "Non-core pages receive standard metadata and schema setup so they stay clean, consistent, and aligned with the larger website structure."}},
+    {"@type": "Question", "name": "Do you update metadata and schema over time?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Metadata, schema, content, services, search behavior, and AI visibility standards change. Continued optimization keeps the foundation current."}},
+    {"@type": "Question", "name": "Do I need this before SEO or link building?", "acceptedAnswer": {"@type": "Answer", "text": "Ideally, yes. SEO, AI search, content optimization, and link building work better when the website is already structured correctly."}},
+    {"@type": "Question", "name": "Can this be added to an existing website?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. SEO & AI Search Setup can be part of a new website build, redesign, or improvement plan for an existing website."}}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "SEO & AI Search Setup",
+  "serviceType": "SEO and AI Search Setup",
+  "provider": {
+    "@type": "Organization",
+    "name": "ImageWorks Creative",
+    "url": "https://www.imageworkscreative.com"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "United States"
+  },
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Local service businesses, professional services firms, and B2B companies"
+  },
+  "description": "Technical and structural website setup for modern search: keyword and AI prompt research, site-wide metadata strategy, global schema setup, technical search setup, custom homepage and core page optimization, and continued metadata and schema updates."
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.imageworkscreative.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Marketing", "item": "https://www.imageworkscreative.com/PLACEHOLDER-marketing-hub-url" },
+    { "@type": "ListItem", "position": 3, "name": "SEO & AI Search Setup", "item": "https://www.imageworkscreative.com/PLACEHOLDER-final-page-slug" }
+  ]
+}
+</script>
+
+</body>
+</html>
