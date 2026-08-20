@@ -280,8 +280,28 @@ a{color:inherit;}
 .iw-link:hover::after{transform:scaleX(1);}
 
 /* --------------------------------------------------------------------------
-   NAV — la barra con desplegables al pasar
+   NAV — la tira de utilidades y luego la barra con desplegables al pasar
    -------------------------------------------------------------------------- */
+/* La tira se va con el scroll y la barra de abajo se queda, para que la página
+   nunca arrastre 130px de cromo por la pantalla. */
+.utility-bar{
+  background:#f1f4f9;
+  border-bottom:1px solid var(--border);
+  padding:10px 0;
+}
+.utility-bar__inner{
+  max-width:1400px;margin:0 auto;padding:0 40px;
+  display:flex;justify-content:flex-end;align-items:center;gap:20px;
+  font-size:14px;
+}
+.utility-bar__item{
+  display:inline-flex;align-items:center;gap:8px;
+  text-decoration:none;color:var(--ink);font-weight:500;
+}
+.utility-bar__item:hover{color:var(--navy);}
+.utility-bar__icon{flex:none;inline-size:18px;block-size:18px;}
+.utility-bar__sep{color:#c9d1de;}
+
 .site-header{
   position:sticky;top:0;z-index:120;
   background:#fff;
@@ -384,9 +404,6 @@ a{color:inherit;}
 .dropdown__link:hover{background:#dcebfa;color:var(--navy);}
 .dropdown__link:hover .dropdown__link-accent{color:var(--blue);}
 .dropdown__link:hover::before{transform:translateY(-50%) scaleY(1);}
-/* la página actual, marcada dentro de su propio desplegable */
-.dropdown__link[aria-current="page"]{background:#eef6e6;color:var(--navy);}
-.dropdown__link[aria-current="page"]::before{transform:translateY(-50%) scaleY(1);}
 
 .dropdown__section-label{
   display:flex;align-items:center;gap:12px;
@@ -409,6 +426,7 @@ a{color:inherit;}
 
 @media (max-width:1024px){
   :root{--nav-h:72px;}
+  .utility-bar__inner{padding:0 20px;font-size:13px;gap:14px;}
   .nav__inner{padding:0 20px;}
   .brand img{height:36px;}
 
@@ -991,12 +1009,34 @@ details[open] > summary .fx{
 
 <!-- ============================================================
      NAV — idéntico al de la página de referencia
-     PRODUCCIÓN: cambiar los src de assets/ por las rutas del sitio
      ============================================================ -->
+<!-- La tira de utilidades se va con el scroll; solo la barra de abajo se queda. -->
+<div class="utility-bar">
+  <div class="utility-bar__inner">
+    <a href="#contact" class="utility-bar__item">
+      <svg class="utility-bar__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="5" y="4" width="14" height="18" rx="2" fill="#e8f2fd" stroke="#1266b5" stroke-width="1.6"/>
+        <path d="M9 3.5h6a1 1 0 0 1 1 1V6a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z" fill="#1266b5"/>
+        <path d="M8.5 12.5l1.4 1.4 2.6-2.8" stroke="#80C34A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="14" y1="12.2" x2="16.5" y2="12.2" stroke="#1266b5" stroke-width="1.6" stroke-linecap="round"/>
+        <line x1="8" y1="17.5" x2="16.5" y2="17.5" stroke="#1266b5" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      Support / Service Request
+    </a>
+    <span class="utility-bar__sep">|</span>
+    <a href="tel:7039287309" class="utility-bar__item">
+      <svg class="utility-bar__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M6.5 4h3l1.3 3.3-2 1.4a12 12 0 0 0 5 5l1.4-2 3.3 1.3v3a1.8 1.8 0 0 1-2 1.8A15.5 15.5 0 0 1 4.7 6a1.8 1.8 0 0 1 1.8-2Z" fill="#80C34A"/>
+      </svg>
+      Call or text! (703) 928-7309
+    </a>
+  </div>
+</div>
+
 <header class="site-header" id="top" data-nav>
   <div class="nav__inner">
     <a class="brand" href="/" aria-label="ImageWorks Creative">
-      <img src="https://imageworksc.github.io/drupal-and-wordpress/assets/logo.png" alt="ImageWorks Creative">
+      <img src="assets/logo.png" alt="ImageWorks Creative">
     </a>
 
     <ul class="menu nav-links" id="nav-links">
@@ -1016,7 +1056,7 @@ details[open] > summary .fx{
           <ul class="dropdown__list">
             <li><a href="/" class="dropdown__link">Website Content</a></li>
             <li><a href="/" class="dropdown__link">Website Evolution<span class="dropdown__badge">Essential</span></a></li>
-            <li><a href="/" class="dropdown__link">Website Maintenance<span class="dropdown__link-accent">Drupal &amp; WordPress</span></a></li>
+            <li><a href="#top" class="dropdown__link">Website Maintenance<span class="dropdown__link-accent">Drupal &amp; WordPress</span></a></li>
             <li><a href="/" class="dropdown__link">Advanced Website Animations</a></li>
             <li><a href="/" class="dropdown__link">Creative Support Hours</a></li>
           </ul>
@@ -1031,7 +1071,7 @@ details[open] > summary .fx{
         <div class="dropdown">
           <div class="dropdown__section-label">SEO + AIO <span class="dropdown__section-label-note">(Modern Search)</span></div>
           <ul class="dropdown__list">
-            <li><a href="#top" class="dropdown__link" aria-current="page">Website Setup &amp; Optimization</a></li>
+            <li><a href="/seo-aio-services/" class="dropdown__link">Website Setup &amp; Optimization</a></li>
             <li><a href="/seo-aio-services/" class="dropdown__link">On-Page Content Optimization</a></li>
             <li><a href="/seo-aio-services/" class="dropdown__link">Link Building</a></li>
             <li><a href="/seo-aio-services/" class="dropdown__link">Citations &amp; Entity Signals<span class="dropdown__link-accent">Local · SEO · AI Trust</span></a></li>
@@ -1053,7 +1093,7 @@ details[open] > summary .fx{
         </button>
         <div class="dropdown dropdown--narrow dropdown--flat">
           <ul class="dropdown__list">
-            <li><a href="/" class="dropdown__link">Website Plans</a></li>
+            <li><a href="#plans" class="dropdown__link">Website Plans</a></li>
             <li><a href="/" class="dropdown__link">Marketing Plans</a></li>
           </ul>
         </div>
@@ -1481,7 +1521,7 @@ details[open] > summary .fx{
   <div class="foot-grid">
 
     <div>
-      <img class="foot-logo" src="https://imageworksc.github.io/drupal-and-wordpress/assets/footer-logo.png" alt="ImageWorks Creative">
+      <img class="foot-logo" src="assets/footer-logo.png" alt="ImageWorks Creative">
 
       <div class="foot-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#80c34a" stroke-width="2.4" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Ashburn, VA Location</div>
       <div class="foot-detail">44679 Endicott Dr Suite 300<br>Unit 580 | Ashburn, VA 20147</div>
@@ -1507,8 +1547,8 @@ details[open] > summary .fx{
           <a class="iw-link" href="/">Web Design</a>
           <a class="iw-link" href="/">Digital Marketing</a>
           <a class="iw-link" href="/">Branding</a>
-          <a class="iw-link" href="/">Website &amp; Marketing Plans</a>
-          <a class="iw-link" href="/">Website Maintenance</a>
+          <a class="iw-link" href="#plans">Website &amp; Marketing Plans</a>
+          <a class="iw-link" href="#top">Website Maintenance</a>
           <a class="iw-link" href="/">Content Writing</a>
           <a class="iw-link" href="/">Google Maps Optimization</a>
           <a class="iw-link" href="/seo-aio-services/">SEO + AIO Optimization</a>
@@ -1532,13 +1572,13 @@ details[open] > summary .fx{
     </div>
 
     <div>
-      <div class="foot-map"><img src="https://imageworksc.github.io/drupal-and-wordpress/assets/footer-map.png" alt="Map of ImageWorks Creative locations"></div>
+      <div class="foot-map"><img src="assets/footer-map.png" alt="Map of ImageWorks Creative locations"></div>
       <div class="foot-news-title">Subscribe to Our Newsletter</div>
       <div class="foot-news-sub">Marketing insights &amp; company news sent straight to your inbox</div>
       <form class="foot-form" onsubmit="return false">
         <label class="sr-only" for="foot-email">Email Address</label>
         <input id="foot-email" type="email" placeholder="Email Address">
-        <button type="submit" aria-label="Subscribe">&rarr;</button>
+        <button type="submit" aria-label="Subscribe">→</button>
       </form>
     </div>
 
